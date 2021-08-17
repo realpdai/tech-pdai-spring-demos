@@ -15,13 +15,16 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 public class LogAspect {
 
     /**
-     *
+     * aspect for every methods under service package.
      */
     @Around("execution(* tech.pdai.springframework.service.*.*(..))")
-    public void businessService(ProceedingJoinPoint pjp) throws Throwable {
+    public Object businessService(ProceedingJoinPoint pjp) throws Throwable {
         // get attribute through annotation
         Method method = ((MethodSignature) pjp.getSignature()).getMethod();
-        System.out.println("execute " + method.getName());
+        System.out.println("execute method: " + method.getName());
+
+        // continue to process
+        return pjp.proceed();
     }
 
 }
