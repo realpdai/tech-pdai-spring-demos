@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-framework-demo-helloworld/spring-framework-demo-helloworld.iml" filepath="$PROJECT_DIR$/spring-framework-demo-helloworld/spring-framework-demo-helloworld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/tech-pdai-spring-demos.iml" filepath="$PROJECT_DIR$/.idea/tech-pdai-spring-demos.iml" />
+    </modules>
+  </component>
+</project>
