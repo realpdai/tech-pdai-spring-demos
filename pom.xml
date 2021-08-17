@@ -6,9 +6,12 @@
 
     <groupId>tech.pdai</groupId>
     <artifactId>tech-pdai-spring-demos</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>spring-framework-demo-helloworld</module>
+        <module>001-spring-framework-demo-helloworld-xml</module>
+        <module>002-spring-framework-demo-helloworld-java</module>
+        <module>003-spring-framework-demo-helloworld-anno</module>
     </modules>
 </project>
