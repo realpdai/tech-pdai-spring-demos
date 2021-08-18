@@ -9,7 +9,36 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>003-spring-framework-demo-helloworld-java</artifactId>
+    <artifactId>003-spring-framework-demo-helloworld-anno</artifactId>
 
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <spring.version>5.3.9</spring.version>
+        <aspectjweaver.version>1.9.6</aspectjweaver.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectjweaver.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

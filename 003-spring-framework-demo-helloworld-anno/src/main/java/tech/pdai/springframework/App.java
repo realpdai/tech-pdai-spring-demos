@@ -3,13 +3,14 @@ package tech.pdai.springframework;
 import java.util.List;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import tech.pdai.springframework.config.BeansConfig;
 import tech.pdai.springframework.entity.User;
 import tech.pdai.springframework.service.UserServiceImpl;
 
 /**
  * @author pdai
  */
+//@ComponentScan("tech.pdai.springframework.service")
+//@ComponentScan("tech.pdai.springframework.dao")
 public class App {
 
     /**
@@ -19,11 +20,10 @@ public class App {
      */
     public static void main(String[] args) {
         // create and configure beans
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(BeansConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("tech.pdai.springframework");
 
         // retrieve configured instance
-        UserServiceImpl service = context.getBean("userService", UserServiceImpl.class);
+        UserServiceImpl service = context.getBean(UserServiceImpl.class);
 
         // use configured instance
         List<User> userList = service.findUserList();
