@@ -19,8 +19,7 @@ public class App {
      */
     public static void main(String[] args) {
         // create and configure beans
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(BeansConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BeansConfig.class);
 
         // retrieve configured instance
         UserServiceImpl service = context.getBean("userService", UserServiceImpl.class);

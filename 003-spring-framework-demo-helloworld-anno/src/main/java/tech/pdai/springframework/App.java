@@ -9,8 +9,6 @@ import tech.pdai.springframework.service.UserServiceImpl;
 /**
  * @author pdai
  */
-//@ComponentScan("tech.pdai.springframework.service")
-//@ComponentScan("tech.pdai.springframework.dao")
 public class App {
 
     /**
@@ -20,7 +18,8 @@ public class App {
      */
     public static void main(String[] args) {
         // create and configure beans
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("tech.pdai.springframework");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+                "tech.pdai.springframework");
 
         // retrieve configured instance
         UserServiceImpl service = context.getBean(UserServiceImpl.class);
