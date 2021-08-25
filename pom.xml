@@ -13,6 +13,8 @@
         <module>001-spring-framework-demo-helloworld-xml</module>
         <module>002-spring-framework-demo-helloworld-java</module>
         <module>003-spring-framework-demo-helloworld-anno</module>
-        <module>004-spring-framework-demo-aop-proxy</module>
+        <module>004-spring-framework-demo-aop-xml</module>
+        <module>005-spring-framework-demo-aop-anno</module>
+        <module>006-spring-framework-demo-aop-proxy-impl</module>
     </modules>
 </project>

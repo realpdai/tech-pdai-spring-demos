@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/aop
+ http://www.springframework.org/schema/aop/spring-aop.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd
+">
+
+    <context:component-scan base-package="tech.pdai.springframework" />
+
+    <aop:aspectj-autoproxy/>
+
+    <!-- 目标类 -->
+    <bean id="demoService" class="tech.pdai.springframework.service.AopDemoServiceImpl">
+        <!-- configure properties of bean here as normal -->
+    </bean>
+
+    <!-- 切面 -->
+    <bean id="logAspect" class="tech.pdai.springframework.aspect.LogAspect">
+        <!-- configure properties of aspect here as normal -->
+    </bean>
+
+    <aop:config>
+        <!-- 配置切面 -->
+        <aop:aspect ref="logAspect">
+            <!-- 配置切入点 -->
+            <aop:pointcut id="pointCutMethod" expression="execution(* tech.pdai.springframework.service.*.*(..))"/>
+            <!-- 环绕通知 -->
+            <aop:around method="doAround" pointcut-ref="pointCutMethod"/>
+            <!-- 前置通知 -->
+            <aop:before method="doBefore" pointcut-ref="pointCutMethod"/>
+            <!-- 后置通知；returning属性：用于设置后置通知的第二个参数的名称，类型是Object -->
+            <aop:after-returning method="doAfterReturning" pointcut-ref="pointCutMethod" returning="result"/>
+            <!-- 异常通知：如果没有异常，将不会执行增强；throwing属性：用于设置通知第二个参数的的名称、类型-->
+            <aop:after-throwing method="doAfterThrowing" pointcut-ref="pointCutMethod" throwing="e"/>
+            <!-- 最终通知 -->
+            <aop:after method="doAfter" pointcut-ref="pointCutMethod"/>
+        </aop:aspect>
+    </aop:config>
+
+
+    <!-- more bean definitions for data access objects go here -->
+</beans>
