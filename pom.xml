@@ -15,6 +15,7 @@
         <module>003-spring-framework-demo-helloworld-anno</module>
         <module>004-spring-framework-demo-aop-xml</module>
         <module>005-spring-framework-demo-aop-anno</module>
-        <module>006-spring-framework-demo-aop-proxy-impl</module>
+        <module>006-spring-framework-demo-aop-proxy-jdk</module>
+        <module>007-spring-framework-demo-aop-proxy-cglib</module>
     </modules>
 </project>

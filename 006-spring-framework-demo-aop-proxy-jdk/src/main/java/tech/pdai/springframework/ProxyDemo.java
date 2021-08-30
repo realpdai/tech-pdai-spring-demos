@@ -1,9 +1,11 @@
+package tech.pdai.springframework;
+
 import tech.pdai.springframework.proxy.UserLogProxy;
 import tech.pdai.springframework.service.IUserService;
 import tech.pdai.springframework.service.UserServiceImpl;
 
 /**
- * This class is for proxy demo interface.
+ * Jdk proxy demo.
  *
  * @author pdai
  */
