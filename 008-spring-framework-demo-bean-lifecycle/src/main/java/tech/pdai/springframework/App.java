@@ -2,7 +2,6 @@ package tech.pdai.springframework;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import tech.pdai.springframework.entity.User;
 
 /**
