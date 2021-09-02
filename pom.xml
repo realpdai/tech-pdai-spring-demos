@@ -18,13 +18,15 @@
         <module>006-spring-framework-demo-aop-proxy-jdk</module>
         <module>007-spring-framework-demo-aop-proxy-cglib</module>
         <module>008-spring-framework-demo-bean-lifecycle</module>
+        <module>501-spring-boot-demo-opcua-milo-server</module>
+        <module>502-spring-boot-demo-opcua-milo-client</module>
     </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <org.projectlombok.version>1.18.12</org.projectlombok.version>
-        <org.slf4j.version>1.7.25</org.slf4j.version>
+        <org.projectlombok.version>1.18.20</org.projectlombok.version>
+        <org.slf4j.version>1.7.30</org.slf4j.version>
         <ch.qos.logback.version>1.2.4</ch.qos.logback.version>
     </properties>
 

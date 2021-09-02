@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: 'spring-boot-milo'
+  output:
+    ansi:
+      enabled: DETECT
+  profiles:
+    active: ssl
+debug: false
+
+---
+spring:
+  profiles: ssl
+config:
+  opcua:
+    enableSSL: true
+    securityPolicy: 'Basic256Sha256'
+    myNode:
+      namespaceIndex: 2
+      identifier: "HelloWorld/CustomStructTypeVariable"
+    client:
+      applicationName: 'opc-ua client'
+      applicationUri: 'urn:eclipse:milo:examples:client'
+      endpointUrl: 'opc.tcp://127.0.0.1:12686/milo'
+      requestTimeOut: 5000
+      sslCertificateType: 'PKCS12'
+      sslCertificateFile: 'certificate-example.der'
+      sslCertificateAlias: 'client-ai'
+      sslCertificatePwd: 'password'
+---
+spring:
+  profiles: no-ssl
+config:
+  opcua:
+    enableSSL: false
+    myNode:
+      namespaceIndex: 2
+      identifier: "HelloWorld/CustomStructTypeVariable"
+    client:
+      applicationName: 'opc-ua client'
+      applicationUri: 'urn:eclipse:milo:examples:client'
+      endpointUrl: 'opc.tcp://127.0.0.1:12686/milo'
+      requestTimeOut: 5000
