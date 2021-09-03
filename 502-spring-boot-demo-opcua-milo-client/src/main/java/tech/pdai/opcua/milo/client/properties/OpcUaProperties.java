@@ -1,4 +1,4 @@
-package pdai.tech.opcua.milo.properties;
+package tech.pdai.opcua.milo.client.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

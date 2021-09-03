@@ -1,4 +1,4 @@
-package pdai.tech.opcua.milo.config;
+package tech.pdai.opcua.milo.client.config;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

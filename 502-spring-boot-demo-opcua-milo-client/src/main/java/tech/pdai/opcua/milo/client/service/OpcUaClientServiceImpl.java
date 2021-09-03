@@ -1,4 +1,4 @@
-package pdai.tech.opcua.milo.service;
+package tech.pdai.opcua.milo.client.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -47,11 +47,11 @@ import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadResult;
 import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadValueId;
 import org.eclipse.milo.opcua.stack.core.types.structured.ReadRawModifiedDetails;
 import org.springframework.stereotype.Service;
-import pdai.tech.opcua.milo.config.OpcUaClientConfig;
-import pdai.tech.opcua.milo.config.OpcUaSSLConfig;
-import pdai.tech.opcua.milo.entity.CustomStructType;
-import pdai.tech.opcua.milo.properties.OpcUaProperties;
-import pdai.tech.opcua.milo.service.impl.IOpcUaService;
+import tech.pdai.opcua.milo.client.config.OpcUaClientConfig;
+import tech.pdai.opcua.milo.client.config.OpcUaSSLConfig;
+import tech.pdai.opcua.milo.client.entity.CustomStructType;
+import tech.pdai.opcua.milo.client.properties.OpcUaProperties;
+import tech.pdai.opcua.milo.client.service.impl.IOpcUaService;
 
 import static org.eclipse.milo.opcua.stack.core.types.builtin.unsigned.Unsigned.uint;
 import static org.eclipse.milo.opcua.stack.core.util.ConversionUtil.l;

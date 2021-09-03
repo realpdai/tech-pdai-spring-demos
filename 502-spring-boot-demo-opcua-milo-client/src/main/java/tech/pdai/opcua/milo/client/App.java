@@ -1,4 +1,4 @@
-package pdai.tech.opcua.milo;
+package tech.pdai.opcua.milo.client;
 
 import java.security.Security;
 import java.util.concurrent.ExecutionException;

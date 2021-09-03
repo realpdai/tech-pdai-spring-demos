@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-package pdai.tech.opcua.milo.entity;
+package tech.pdai.opcua.milo.client.entity;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;

@@ -1,4 +1,4 @@
-package pdai.tech.opcua.milo.controller;
+package tech.pdai.opcua.milo.client.controller;
 
 import java.util.List;
 
@@ -15,9 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pdai.tech.opcua.milo.entity.CustomStructType;
-import pdai.tech.opcua.milo.properties.OpcUaProperties;
-import pdai.tech.opcua.milo.service.impl.IOpcUaService;
+import tech.pdai.opcua.milo.client.entity.CustomStructType;
+import tech.pdai.opcua.milo.client.properties.OpcUaProperties;
+import tech.pdai.opcua.milo.client.service.impl.IOpcUaService;
 
 /**
  * @author pdai

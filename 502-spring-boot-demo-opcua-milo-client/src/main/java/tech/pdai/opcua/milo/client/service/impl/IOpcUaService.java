@@ -1,4 +1,4 @@
-package pdai.tech.opcua.milo.service.impl;
+package tech.pdai.opcua.milo.client.service.impl;
 
 import java.io.IOException;
 import java.security.KeyStoreException;
@@ -12,7 +12,7 @@ import org.eclipse.milo.opcua.stack.core.UaException;
 import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.structured.HistoryReadValueId;
-import pdai.tech.opcua.milo.entity.CustomStructType;
+import tech.pdai.opcua.milo.client.entity.CustomStructType;
 
 /**
  * opc ua service.
