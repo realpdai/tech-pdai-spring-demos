@@ -11,14 +11,12 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>tech.pdai</groupId>
-    <artifactId>502-spring-boot-demo-opcua-milo-client</artifactId>
+    <artifactId>101-springboot-demo-helloworld</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <java.version>1.8</java.version>
-        <org.eclipse.milo.version>0.6.4-SNAPSHOT</org.eclipse.milo.version>
     </properties>
 
     <dependencies>
@@ -31,22 +29,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.eclipse.milo</groupId>
-            <artifactId>sdk-client</artifactId>
-            <version>${org.eclipse.milo.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.milo</groupId>
-            <artifactId>dictionary-reader</artifactId>
-            <version>${org.eclipse.milo.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.milo</groupId>
-            <artifactId>dictionary-manager</artifactId>
-            <version>${org.eclipse.milo.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -54,5 +36,14 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
