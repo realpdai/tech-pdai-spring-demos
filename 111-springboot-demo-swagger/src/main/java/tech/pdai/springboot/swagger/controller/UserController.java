@@ -1,21 +1,16 @@
 package tech.pdai.springboot.swagger.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import tech.pdai.springboot.swagger.entity.User;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import tech.pdai.springboot.swagger.entity.param.UserParam;
-import tech.pdai.springboot.swagger.service.UserService;
+import tech.pdai.springboot.swagger.entity.vo.AddressVo;
+import tech.pdai.springboot.swagger.entity.vo.UserVo;
 
 /**
  * @author pdai
@@ -25,9 +20,6 @@ import tech.pdai.springboot.swagger.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
-
     /**
      * http://localhost:8080/user/add .
      *
@@ -35,10 +27,10 @@ public class UserController {
      * @return user
      */
     @ApiOperation("Add User")
-    @RequestMapping("add")
-    public User add(@RequestBody UserParam userParam) {
-        userService.addUser(user);
-        return user;
+    @PostMapping("add")
+    @ApiImplicitParam(name = "userParam", type = "body", dataType = "UserParam", required = true)
+    public ResponseEntity<String> add(@RequestBody UserParam userParam) {
+        return ResponseEntity.ok("success");
     }
 
     /**
@@ -47,10 +39,10 @@ public class UserController {
      * @return user list
      */
     @ApiOperation("Query User List")
-    @ApiResponse(responseCode = "1001", description = "操作成功")
-    @ApiImplicitParam(paramType = "query", dataType = "Long", name = "id", value = "信息id", required = true)
     @GetMapping("list")
-    public List<User> list() {
-        return userService.list();
+    public ResponseEntity<List<UserVo>> list() {
+        List<UserVo> userVoList = Collections.singletonList(UserVo.builder().name("dai").age(18)
+                .address(AddressVo.builder().city("SZ").zipcode("10001").build()).build());
+        return ResponseEntity.ok(userVoList);
     }
 }
