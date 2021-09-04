@@ -18,19 +18,19 @@
         <module>006-spring-framework-demo-aop-proxy-jdk</module>
         <module>007-spring-framework-demo-aop-proxy-cglib</module>
         <module>008-spring-framework-demo-bean-lifecycle</module>
-        <module>501-spring-boot-demo-opcua-milo-server</module>
-        <module>502-spring-boot-demo-opcua-milo-client</module>
-        <module>201-spring-boot-demo-helloworld</module>
-        <module>202-spring-boot-demo-helloworld-mvc</module>
         <module>101-springboot-demo-helloworld</module>
         <module>102-springboot-demo-helloworld-mvc</module>
-        <module>111-springboot-demo-swagger</module>
-        <module>112-springboot-demo-swagger-bootstrap-ui</module>
-        <module>113-springboot-demo-knife4j</module>
+        <module>111-springboot-demo-swagger-v3-openapi</module>
+        <module>111-springboot-demo-swagger-v2-bootstrap-ui</module>
+        <module>113-springboot-demo-knife4j-v3</module>
         <module>121-springboot-demo-lombok</module>
         <module>122-springboot-demo-mapstruct</module>
         <module>131-springboot-demo-logback</module>
         <module>201-springboot-demo-db-h2-jpa</module>
+        <module>113-springboot-demo-knife4j-v2</module>
+        <module>111-springboot-demo-swagger-v2</module>
+        <module>501-springboot-demo-opcua-milo-server</module>
+        <module>502-springboot-demo-opcua-milo-client</module>
     </modules>
 
     <properties>
