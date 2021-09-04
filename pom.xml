@@ -31,6 +31,7 @@
         <module>111-springboot-demo-swagger-v2</module>
         <module>501-springboot-demo-opcua-milo-server</module>
         <module>502-springboot-demo-opcua-milo-client</module>
+        <module>141-springboot-demo-validation</module>
     </modules>
 
     <properties>
