@@ -39,11 +39,11 @@
     + 131-log-logback
 
 + 14x - validation
-    + 141-validation-binding-result
-    + 142-validation-self-defined
-    + 143-validation-group
-    + 144-validation-exception-handler
-    + 145-validation-i18n
+    + *141-validation-binding-result
+    + 142-validation-exception-handler
+    + 143-validation-i18n
+    + 144-validation-self-defined
+    + 145-validation-group
 
 + 15x - view resolver
     + 151-thymeleaf

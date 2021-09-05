@@ -32,6 +32,8 @@
         <module>501-springboot-demo-opcua-milo-server</module>
         <module>502-springboot-demo-opcua-milo-client</module>
         <module>141-springboot-demo-validation</module>
+        <module>142-springboot-demo-validation-exception-handler</module>
+        <module>143-springboot-demo-validation-i18n</module>
     </modules>
 
     <properties>
