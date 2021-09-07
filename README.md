@@ -71,6 +71,7 @@
     + 213-mysql57-mybatis-anno
     + 214-mysql57-mybatis-plus
     + druid
+    + shardingJDBC
 + **22x - mysql8**
     + 221-mysql8-jpa
     + 222-mysql8-mybatis-xml
