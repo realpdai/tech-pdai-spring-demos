@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    platform: h2
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb;MODE=MYSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
+    username: pdai
+    password: pdai
+    schema: classpath:db/schema/user-schema.sql
+    data: classpath:db/data/user-data.sql
+    initialization-mode: always
+  h2:
+    console:
+      settings:
+        trace: true
+        web-allow-others: true
+      enabled: true
+      path: /h2-console
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    generate-ddl: false
+    open-in-view: false
