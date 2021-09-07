@@ -1,4 +1,4 @@
-package pdai.tech.springboot.validation.entity.param;
+package tech.pdai.springboot.validation.entity.param;
 
 import io.swagger.annotations.ApiModel;
 import lombok.Builder;

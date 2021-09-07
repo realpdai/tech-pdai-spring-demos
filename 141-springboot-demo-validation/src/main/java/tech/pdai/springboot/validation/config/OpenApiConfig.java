@@ -1,4 +1,4 @@
-package pdai.tech.springboot.validation.config;
+package tech.pdai.springboot.validation.config;
 
 import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import io.swagger.annotations.ApiOperation;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import pdai.tech.springboot.validation.constant.ResponseStatus;
+import tech.pdai.springboot.validation.constant.ResponseStatus;
 import springfox.documentation.builders.*;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.schema.ScalarType;

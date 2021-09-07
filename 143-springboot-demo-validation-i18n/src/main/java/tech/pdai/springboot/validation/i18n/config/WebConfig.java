@@ -1,5 +1,7 @@
 package tech.pdai.springboot.validation.i18n.config;
 
+import java.util.Locale;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.validation.MessageInterpolatorFactory;
 import org.springframework.context.annotation.Bean;
@@ -12,53 +14,70 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
-import java.util.Locale;
-
 /**
- * This class is for xxxx.
+ * This class is for web config.
  *
  * @author pdai
  */
 @Configuration
 @RequiredArgsConstructor
 public class WebConfig implements WebMvcConfigurer {
-    /**
-     * 国际化的参数名
-     */
-    private static final String LANGUAGE_PARAM_NAME = "lang";
 
+    /**
+     * lang param name in header, default to 'locale'.
+     */
+    private static final String LANGUAGE_PARAM_NAME = LocaleChangeInterceptor.DEFAULT_PARAM_NAME;
+
+    /**
+     * message source.
+     */
     private final ResourceBundleMessageSource resourceBundleMessageSource;
 
+    /**
+     * default locale.
+     *
+     * @return locale resolver
+     */
     @Bean
     public LocaleResolver localeResolver() {
         SessionLocaleResolver localeResolver = new SessionLocaleResolver();
-        //指定默认语言为中文
         localeResolver.setDefaultLocale(Locale.SIMPLIFIED_CHINESE);
         return localeResolver;
     }
 
+    /**
+     * local validator factory bean.
+     *
+     * @return LocalValidatorFactoryBean
+     */
     @Bean
     public LocalValidatorFactoryBean localValidatorFactoryBean() {
         LocalValidatorFactoryBean factoryBean = new LocalValidatorFactoryBean();
         MessageInterpolatorFactory interpolatorFactory = new MessageInterpolatorFactory();
         factoryBean.setMessageInterpolator(interpolatorFactory.getObject());
-        // 设置快速失败，Hibernate 验证框架默认验证所有字段设置的所有规则，并返回错误集合。
-        // 快速失败则是只要验证时出现一个错误，立马返回，不执行后面的验证规则
-        //factoryBean.getValidationPropertyMap().put("hibernate.validator.fail_fast", "true");
-        //为Validator配置国际化
         factoryBean.setValidationMessageSource(resourceBundleMessageSource);
         return factoryBean;
     }
 
+    /**
+     * locale change interceptor.
+     *
+     * @return LocaleChangeInterceptor
+     */
     @Bean
-    public LocaleChangeInterceptor i18nInterceptor() {
-        LocaleChangeInterceptor interceptor = new I18NInterceptor();
+    public LocaleChangeInterceptor localeChangeInterceptor() {
+        LocaleChangeInterceptor interceptor = new CustomLocaleChangeInterceptor();
         interceptor.setParamName(LANGUAGE_PARAM_NAME);
         return interceptor;
     }
 
+    /**
+     * register locale change interceptor.
+     *
+     * @param registry registry
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(i18nInterceptor());
+        registry.addInterceptor(localeChangeInterceptor());
     }
 }

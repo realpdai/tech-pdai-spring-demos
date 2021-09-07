@@ -1,4 +1,4 @@
-package pdai.tech.springboot.validation.controller;
+package tech.pdai.springboot.validation.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pdai.tech.springboot.validation.entity.param.UserParam;
+import tech.pdai.springboot.validation.entity.param.UserParam;
 
 import javax.validation.Valid;
 import java.util.List;

@@ -1,26 +1,40 @@
 package tech.pdai.springboot.validation.i18n.config;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.lang.NonNull;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+/**
+ * custom locale change interceptor.
+ *
+ * @author pdai
+ */
 @Slf4j
-public class I18NInterceptor extends LocaleChangeInterceptor {
+public class CustomLocaleChangeInterceptor extends LocaleChangeInterceptor {
 
+    /**
+     * try to get locale from header, if not exist then get it from request parameter.
+     *
+     * @param request  request
+     * @param response response
+     * @param handler  handler
+     * @return bool
+     * @throws ServletException ServletException
+     */
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException {
-        //getParameter 改为 getHeader
+    public boolean preHandle(HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull Object handler) throws ServletException {
         String newLocale = request.getHeader(getParamName());
-        if (newLocale != null) {
-            if (checkHttpMethod(request.getMethod())) {
+        if (newLocale!=null) {
+            if (checkHttpMethods(request.getMethod())) {
                 LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-                if (localeResolver == null) {
+                if (localeResolver==null) {
                     throw new IllegalStateException("No LocaleResolver found: not in a DispatcherServlet request?");
                 }
                 try {
@@ -35,12 +49,11 @@ public class I18NInterceptor extends LocaleChangeInterceptor {
             }
             return true;
         } else {
-            // 如果从Header中未获取到国际化参数值，则调用Spring的默认实现获取国际化参数值
             return super.preHandle(request, response, handler);
         }
     }
 
-    private boolean checkHttpMethod(String currentMethod) {
+    private boolean checkHttpMethods(String currentMethod) {
         String[] configuredMethods = getHttpMethods();
         if (ObjectUtils.isEmpty(configuredMethods)) {
             return true;

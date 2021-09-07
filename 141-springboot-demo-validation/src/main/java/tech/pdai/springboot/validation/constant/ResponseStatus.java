@@ -1,4 +1,4 @@
-package pdai.tech.springboot.validation.constant;
+package tech.pdai.springboot.validation.constant;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
