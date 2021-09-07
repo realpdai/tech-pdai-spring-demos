@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<th:block th:include="include :: header('新增用户')" />
+	<th:block th:include="include :: select2-css" />
+</head>
+<body>
+    <div class="main-content">
+        <form id="form-user-add" class="form-horizontal">
+            <input name="deptId" type="hidden" id="treeId"/>
+            <h4 class="form-header h4">基本信息</h4>
+            <div class="row">
+            	<div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label is-required">用户名称：</label>
+                        <div class="col-sm-8">
+                            <input name="userName" placeholder="请输入用户名称" class="form-control" type="text" maxlength="30" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label is-required">登录账号：</label>
+                        <div class="col-sm-8">
+                            <input id="loginName" name="loginName" placeholder="请输入登录账号" class="form-control" type="text" maxlength="30" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label is-required">手机号码：</label>
+                        <div class="col-sm-8">
+                            <input id="phonenumber" name="phonenumber" placeholder="请输入手机号码" class="form-control" type="text" maxlength="11" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label is-required">邮箱：</label>
+                        <div class="col-sm-8">
+                            <input id="email" name="email" class="form-control email" type="text" maxlength="20" placeholder="请输入邮箱" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">用户性别：</label>
+                        <div class="col-sm-8">
+                            <select name="sex" class="form-control m-b">
+                                <option value="0">女</option>
+                                <option value="1">男</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">用户状态：</label>
+                        <div class="col-sm-8">
+                            <label class="toggle-switch switch-solid">
+	                            <input type="checkbox" id="status" checked>
+	                            <span></span>
+	                        </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 class="form-header h4">其他信息</h4>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">备注：</label>
+                        <div class="col-xs-10">
+                            <textarea name="remark" maxlength="500" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+	<th:block th:include="include :: footer" />
+	<th:block th:include="include :: select2-js" />
+	<script>
+	    var prefix = ctx + "system/user";
+	
+        $("#form-user-add").validate({
+        	onkeyup: false,
+        	rules:{
+        		loginName:{
+        			minlength: 2,
+        			maxlength: 20,
+        			remote: {
+                        url: prefix + "/checkLoginNameUnique",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                        	"loginName": function() {
+                                return $.common.trim($("#loginName").val());
+                            }
+                        },
+                        dataFilter: function(data, type) {
+                        	return $.validate.unique(data);
+                        }
+                    }
+        		},
+        		email:{
+                    email:true,
+                    remote: {
+                        url: prefix + "/checkEmailUnique",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            "email": function () {
+                                return $.common.trim($("#email").val());
+                            }
+                        },
+                        dataFilter: function (data, type) {
+                        	return $.validate.unique(data);
+                        }
+                    }
+        		},
+        		phonenumber:{
+        			isPhone:true,
+                    remote: {
+                        url: prefix + "/checkPhoneUnique",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            "phonenumber": function () {
+                                return $.common.trim($("#phonenumber").val());
+                            }
+                        },
+                        dataFilter: function (data, type) {
+                        	return $.validate.unique(data);
+                        }
+                    }
+        		},
+        	},
+        	messages: {
+                "loginName": {
+                    remote: "用户已经存在"
+                },
+        		"email": {
+                    remote: "Email已经存在"
+                },
+        		"phonenumber":{
+                	remote: "手机号码已经存在"
+        		}
+            },
+            focusCleanup: true
+        });
+        
+        function submitHandler() {
+	        if ($.validate.form()) {
+	        	var data = $("#form-user-add").serializeArray();
+	        	var status = $("input[id='status']").is(':checked') == true ? 0 : 1;
+	        	var roleIds = $.form.selectCheckeds("role");
+	        	data.push({"name": "status", "value": status});
+	        	data.push({"name": "roleIds", "value": roleIds});
+	        	$.operate.save(prefix + "/add", data);
+	        }
+	    }
+
+		function doSubmit(index, layero){
+			var tree = layero.find("iframe")[0].contentWindow.$._tree;
+			if ($.tree.notAllowParents(tree)) {
+				var body = layer.getChildFrame('body', index);
+    			$("#treeId").val(body.find('#treeId').val());
+    			$("#treeName").val(body.find('#treeName').val());
+    			layer.close(index);
+			}
+		}
+    </script>
+</body>
+</html>
