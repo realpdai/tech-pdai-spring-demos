@@ -1,0 +1,33 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: bfXa4Pt2lUUScy8jakXf
+    initial-size: 100
+    max-idle: 60
+    max-wait: 10000
+    min-idle: 20
+    max-active: 500
+  jpa:
+    database: postgresql
+    generate-ddl: false
+    show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL94Dialect
+        format_sql: true
+knife4j:
+  enable: true
+  setting:
+    # default lang
+    language: en-US
+    # footer
+    enableFooter: false
+    enableFooterCustom: true
+    footerCustomContent: MIT | [Java 全栈](https://pdai.tech)
+    # models
+    enableSwaggerModels: true
+    swaggerModelName: My Models

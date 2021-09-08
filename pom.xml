@@ -38,7 +38,6 @@
         <module>212-springboot-demo-mysql57-mybatis-xml</module>
         <module>213-springboot-demo-mysql57-mybatis-anno</module>
         <module>214-springboot-demo-mysql57-mybatis-plus</module>
-        <module>untitled</module>
         <module>221-springboot-demo-mysql8-jpa</module>
         <module>222-springboot-demo-mysql8-mybatis-xml</module>
         <module>223-springboot-demo-mysql8-mybatis-anno</module>
@@ -46,6 +45,8 @@
         <module>191-springboot-demo-junit-v4</module>
         <module>195-springboot-demo-junit-v5</module>
         <module>197-springboot-demo-junit-v5-mockito</module>
+        <module>231-springboot-demo-postgre-jpa</module>
+        <module>232-springboot-demo-postgre-jpa-jsonb</module>
     </modules>
 
     <properties>
