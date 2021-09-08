@@ -47,6 +47,7 @@
         <module>197-springboot-demo-junit-v5-mockito</module>
         <module>231-springboot-demo-postgre-jpa</module>
         <module>232-springboot-demo-postgre-jpa-jsonb</module>
+        <module>219-springboot-demo-mysql57-druid</module>
     </modules>
 
     <properties>
