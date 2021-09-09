@@ -48,6 +48,10 @@
         <module>231-springboot-demo-postgre-jpa</module>
         <module>232-springboot-demo-postgre-jpa-jsonb</module>
         <module>219-springboot-demo-mysql57-druid</module>
+        <module>239-springboot-demo-postgre-jpa-druid</module>
+        <module>411-springboot-demo-websocket</module>
+        <module>412-springboot-demo-websocket-netty</module>
+        <module>421-springboot-demo-schedule-springtasks</module>
     </modules>
 
     <properties>

@@ -1,13 +1,25 @@
-package tech.pdai.springboot.mysql57.druid.entity;
+package tech.pdai.springboot.postgre.jpa.druid.entity;
+
+import java.time.LocalDateTime;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Set;
+import org.hibernate.annotations.GenericGenerator;
+import tech.pdai.springboot.postgre.jpa.druid.constants.PGConstants;
 
 /**
  * @author pdai
@@ -19,14 +31,13 @@ import java.util.Set;
 @Table(name = "tb_user")
 public class User implements BaseEntity {
 
-
-
     /**
      * user id.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
+    @GeneratedValue(generator = PGConstants.ID_GENERATOR)
+    @GenericGenerator(name = PGConstants.ID_GENERATOR, strategy = PGConstants.ID_GENERATOR_CONFIG)
     private Long id;
 
     /**

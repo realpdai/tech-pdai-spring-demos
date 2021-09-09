@@ -4,10 +4,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      name: mysql
-      driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/test_db?useSSL=false&autoReconnect=true&characterEncoding=utf8
-      username: root
+      name: postgre
+      url: jdbc:postgresql://localhost:5432/postgres
+      username: postgres
       password: bfXa4Pt2lUUScy8jakXf
       # 连接池的配置信息
       initial-size: 100
@@ -15,6 +14,8 @@ spring:
       max-wait: 10000
       min-idle: 20
       max-active: 500
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
       # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
       timeBetweenEvictionRunsMillis: 60000
       # 配置一个连接在池中最小生存的时间，单位是毫秒
@@ -43,14 +44,15 @@ spring:
         allow: "127.0.0.1"  # 白名单
         deny: 192.168.1.12 # 黑名单
   jpa:
+    database: postgresql
     generate-ddl: false
     show-sql: false
     open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
+        dialect: org.hibernate.dialect.PostgreSQL94Dialect
         format_sql: true
-        use-new-id-generator-mappings: false
 knife4j:
   enable: true
   setting:

@@ -2,135 +2,104 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="tech.pdai.mybatis.xml.web.system.user.mapper.UserMapper">
+<mapper namespace="tech.pdai.springboot.mysql57.mybatis.xml.dao.IUserDao">
 
-	<resultMap type="tech.pdai.mybatis.xml.web.system.user.domain.User" id="UserResult">
-		<id     property="userId"       column="user_id"      />
-		<result property="loginName"    column="login_name"   />
-		<result property="userName"     column="user_name"    />
-		<result property="email"        column="email"        />
-		<result property="phonenumber"  column="phonenumber"  />
-		<result property="sex"          column="sex"          />
-		<result property="avatar"       column="avatar"       />
-		<result property="status"       column="status"       />
-		<result property="delFlag"      column="del_flag"     />
-		<result property="createBy"     column="create_by"    />
-		<result property="createTime"   column="create_time"  />
-		<result property="updateBy"     column="update_by"    />
-		<result property="updateTime"   column="update_time"  />
-		<result property="remark"       column="remark"       />
+	<resultMap type="tech.pdai.springboot.mysql57.mybatis.xml.entity.User" id="UserResult">
+		<id     property="id"       	column="id"      		/>
+		<result property="userName"     column="user_name"    	/>
+		<result property="password"     column="password"    	/>
+		<result property="email"        column="email"        	/>
+		<result property="phoneNumber"  column="phone_number"  	/>
+		<result property="description"  column="description"  	/>
+		<result property="createTime"   column="create_time"  	/>
+		<result property="updateTime"   column="update_time"  	/>
+		<collection property="roles" ofType="tech.pdai.springboot.mysql57.mybatis.xml.entity.Role">
+			<result property="id" column="id"  />
+			<result property="name" column="name"  />
+			<result property="roleKey" column="role_key"  />
+			<result property="description" column="description"  />
+			<result property="createTime"   column="create_time"  	/>
+			<result property="updateTime"   column="update_time"  	/>
+		</collection>
 	</resultMap>
 	
-	<sql id="selectUserVo">
-        select  u.user_id, u.login_name, u.user_name, u.email, u.avatar, u.phonenumber, u.sex, u.status, u.del_flag, u.create_time, u.remark
-               	from sys_user u
+	<sql id="selectUserSql">
+        select u.id, u.password, u.user_name, u.email, u.phone_number, u.description, u.create_time, u.update_time, r.name, r.role_key, r.description, r.create_time, r.update_time
+		from tb_user u
+		left join tb_user_role ur on u.id=ur.user_id
+		inner join tb_role r on ur.role_id=r.id
     </sql>
 	
-	<select id="selectUserList" parameterType="tech.pdai.mybatis.xml.web.system.user.domain.User" resultMap="UserResult">
-		select u.user_id, u.login_name, u.user_name, u.email, u.avatar, u.phonenumber, u.sex, u.status, u.del_flag, u.create_by, u.create_time, u.remark from sys_user u
-		where u.del_flag = '0'
-		<if test="loginName != null and loginName != ''">
-			AND u.login_name like concat('%', #{loginName}, '%')
+	<select id="findList" parameterType="tech.pdai.springboot.mysql57.mybatis.xml.entity.query.UserQueryBean" resultMap="UserResult">
+		<include refid="selectUserSql"/>
+		where u.id != 0
+		<if test="userName != null and userName != ''">
+			AND u.user_name like concat('%', #{user_name}, '%')
 		</if>
-		<if test="status != null and status != ''">
-			AND u.status = #{status}
+		<if test="description != null and description != ''">
+			AND u.description like concat('%', #{description}, '%')
 		</if>
-		<if test="phonenumber != null and phonenumber != ''">
-			AND u.phonenumber like concat('%', #{phonenumber}, '%')
+		<if test="phoneNumber != null and phoneNumber != ''">
+			AND u.phone_number like concat('%', #{phoneNumber}, '%')
 		</if>
-		<if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
-			AND date_format(u.create_time,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
-		</if>
-		<if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
-			AND date_format(u.create_time,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+		<if test="email != null and email != ''">
+			AND u.email like concat('%', #{email}, '%')
 		</if>
 	</select>
-
-	<select id="selectUserByLoginName" parameterType="String" resultMap="UserResult">
-	    <include refid="selectUserVo"/>
-		where u.login_name = #{userName}
+	
+	<select id="findById" parameterType="Long" resultMap="UserResult">
+		<include refid="selectUserSql"/>
+		where u.id = #{id}
 	</select>
 	
-	<select id="selectUserByPhoneNumber" parameterType="String" resultMap="UserResult">
-		<include refid="selectUserVo"/>
-		where u.phonenumber = #{phonenumber}
-	</select>
-	
-	<select id="selectUserByEmail" parameterType="String" resultMap="UserResult">
-	    <include refid="selectUserVo"/>
-		where u.email = #{email}
-	</select>
-	
-	<select id="checkLoginNameUnique" parameterType="String" resultType="int">
-		select count(1) from sys_user where login_name=#{loginName}
-	</select>
-	
-	<select id="checkPhoneUnique" parameterType="String" resultMap="UserResult">
-		select user_id, phonenumber from sys_user where phonenumber=#{phonenumber}
-	</select>
-	
-	<select id="checkEmailUnique" parameterType="String" resultMap="UserResult">
-		select user_id, email from sys_user where email=#{email}
-	</select>
-	
-	<select id="selectUserById" parameterType="Long" resultMap="UserResult">
-		<include refid="selectUserVo"/>
-		where u.user_id = #{userId}
-	</select>
-	
-	<delete id="deleteUserById" parameterType="Long">
- 		delete from sys_user where user_id = #{userId}
+	<delete id="deleteById" parameterType="Long">
+ 		delete from tb_user where id = #{id}
  	</delete>
  	
- 	<delete id="deleteUserByIds" parameterType="Long">
- 		update sys_user set del_flag = '2' where user_id in
- 		<foreach collection="array" item="userId" open="(" separator="," close=")">
- 			#{userId}
+ 	<delete id="deleteByIds" parameterType="Long">
+		delete from tb_user where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
         </foreach> 
  	</delete>
  	
- 	<update id="updateUser" parameterType="tech.pdai.mybatis.xml.web.system.user.domain.User">
- 		update sys_user
+ 	<update id="update" parameterType="tech.pdai.springboot.mysql57.mybatis.xml.entity.User">
+ 		update tb_user
  		<set>
- 			<if test="loginName != null and loginName != ''">login_name = #{loginName},</if>
  			<if test="userName != null and userName != ''">user_name = #{userName},</if>
  			<if test="email != null and email != ''">email = #{email},</if>
- 			<if test="phonenumber != null and phonenumber != ''">phonenumber = #{phonenumber},</if>
- 			<if test="sex != null and sex != ''">sex = #{sex},</if>
- 			<if test="avatar != null and avatar != ''">avatar = #{avatar},</if>
- 			<if test="status != null and status != ''">status = #{status},</if>
- 			<if test="updateBy != null and updateBy != ''">update_by = #{updateBy},</if>
- 			<if test="remark != null">remark = #{remark},</if>
+ 			<if test="phoneNumber != null and phoneNumber != ''">phone_number = #{phoneNumber},</if>
+			<if test="description != null and description != ''">description = #{description},</if>
  			update_time = sysdate()
  		</set>
- 		where user_id = #{userId}
+ 		where id = #{id}
+	</update>
+
+	<update id="updatePassword" parameterType="tech.pdai.springboot.mysql57.mybatis.xml.entity.User">
+		update tb_user
+		<set>
+			password = #{password}, update_time = sysdate()
+		</set>
+		where id = #{id}
 	</update>
  	
- 	<insert id="insertUser" parameterType="tech.pdai.mybatis.xml.web.system.user.domain.User" useGeneratedKeys="true" keyProperty="userId">
- 		insert into sys_user(
- 			<if test="userId != null and userId != 0">user_id,</if>
- 			<if test="loginName != null and loginName != ''">login_name,</if>
+ 	<insert id="save" parameterType="tech.pdai.springboot.mysql57.mybatis.xml.entity.User" useGeneratedKeys="true" keyProperty="id">
+ 		insert into tb_user(
  			<if test="userName != null and userName != ''">user_name,</if>
+			<if test="password != null and password != ''">password,</if>
  			<if test="email != null and email != ''">email,</if>
- 			<if test="avatar != null and avatar != ''">avatar,</if>
- 			<if test="phonenumber != null and phonenumber != ''">phonenumber,</if>
- 			<if test="sex != null and sex != ''">sex,</if>
- 			<if test="status != null and status != ''">status,</if>
- 			<if test="createBy != null and createBy != ''">create_by,</if>
- 			<if test="remark != null and remark != ''">remark,</if>
- 			create_time
+			<if test="phoneNumber != null and phoneNumber != ''">phone_number,</if>
+ 			<if test="description != null and description != ''">description,</if>
+ 			create_time,
+			update_time
  		)values(
- 			<if test="userId != null and userId != ''">#{userId},</if>
- 			<if test="loginName != null and loginName != ''">#{loginName},</if>
  			<if test="userName != null and userName != ''">#{userName},</if>
+			<if test="password != null and password != ''">#{password},</if>
  			<if test="email != null and email != ''">#{email},</if>
- 			<if test="avatar != null and avatar != ''">#{avatar},</if>
- 			<if test="phonenumber != null and phonenumber != ''">#{phonenumber},</if>
- 			<if test="sex != null and sex != ''">#{sex},</if>
- 			<if test="status != null and status != ''">#{status},</if>
- 			<if test="createBy != null and createBy != ''">#{createBy},</if>
- 			<if test="remark != null and remark != ''">#{remark},</if>
- 			sysdate()
+ 			<if test="phoneNumber != null and phoneNumber != ''">#{phone_number},</if>
+ 			<if test="description != null and description != ''">#{description},</if>
+ 			sysdate(),
+			sysdate()
  		)
 	</insert>
 	
