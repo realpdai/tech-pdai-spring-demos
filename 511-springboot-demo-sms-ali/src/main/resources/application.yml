@@ -1,0 +1,7 @@
+sms:
+  product: Dysmsapi
+  domain: dysmsapi.aliyuncs.com
+  region: cn-hangzhou
+  endpoint: cn-hangzhou
+  accessKeyId: 'xxxxxx'
+  accessKeySecret: 'xxxxx'

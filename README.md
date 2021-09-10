@@ -72,6 +72,8 @@
     + 214-mysql57-mybatis-plus
     + <mark>*219-mysql57-mybatis-druid*
     + shardingJDBC
+    + multiple-datasource
+    + multiple-mybatis-plus
 + **22x - mysql8**
     + <mark>*221-mysql8-jpa*
     + <mark>*222-mysql8-mybatis-xml*
@@ -79,14 +81,15 @@
     + 224-mysql8-mybatis-plus
     + <mark>*229-mysql57-mybatis-druid*
 + **23x - postgre**
-  + <mark>*231-postgre-jpa*
-  + 232-postgre-jpa-jsonb
-  + <mark>*239-postgre-jpa-druid*
+    + <mark>*231-postgre-jpa*
+    + 232-postgre-jpa-jsonb
+    + <mark>*239-postgre-jpa-druid*
 + **24x - redis**
 + **25x - mongodb**
 + **26x - elasticsearch**
 + **27x - hbase**
 + **28x - neo4j**
+
 ### 3xx - springBoot 2.5.x + MQ
 
 
@@ -94,22 +97,33 @@
 
 + 41x - websocket
   + 411-websocket
+    + https://www.cnblogs.com/xuwenjin/p/12664650.html
+  + 412-websocket-netty
 + 42x - schedule
-  + spring tasks
-  + quartz
-  + quartz-db
-+ 43x security
+  + <mark>*420-timer*
+    + https://blog.csdn.net/a1439775520/article/details/98472123
+  + <mark>*421-ScheduleExecutorService*
+    + https://blog.csdn.net/tsyj810883979/article/details/8481621/
+  + <mark>*422-spring-tasks*
+  + <mark>*423-quartz*
+  + <mark>*424-quartz-cluster*
+  + 427-HashedWheelTimer
+    + https://www.cnblogs.com/lihao007/p/10588072.html
++ 43x - security
   + basic
   + oauth2
-+ 44x shiro
++ 44x - shiro
 
-+ 48x - dubo
++ 48x - dubbo
 
 ### 5xx - springBoot 2.5.x + Others
 
 + 50x - opcua-milo
   + <mark>*501-opcua-milo-server*
   + <mark>*502-opcua-milo-client*
+
++ 51x - sms
+  + <mark>*511-sms-ali*
 
 + docker
 + vue
@@ -120,6 +134,8 @@
 
 + rate limiter
 + method time cost
+  + AOP
+  + stop watch
 
 ### 7xx - springBoot 2.5.x + WebFlux
 

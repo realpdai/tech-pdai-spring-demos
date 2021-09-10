@@ -52,6 +52,12 @@
         <module>411-springboot-demo-websocket</module>
         <module>412-springboot-demo-websocket-netty</module>
         <module>421-springboot-demo-schedule-springtasks</module>
+        <module>202-springboot-demo-db-h2-mybatis</module>
+        <module>511-springboot-demo-sms-ali</module>
+        <module>420-springboot-demo-schedule-timer</module>
+        <module>422-springboot-demo-schedule-quartz</module>
+        <module>423-springboot-demo-schedule-quartz-cluster</module>
+        <module>420-springboot-demo-schedule-executor-service</module>
     </modules>
 
     <properties>
