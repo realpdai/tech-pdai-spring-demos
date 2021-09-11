@@ -58,6 +58,14 @@
         <module>422-springboot-demo-schedule-quartz</module>
         <module>423-springboot-demo-schedule-quartz-cluster</module>
         <module>420-springboot-demo-schedule-executor-service</module>
+        <module>216-springboot-demo-mysql57-mybatis-multi-datasource</module>
+        <module>217-springboot-demo-mysql57-mybatis-multi-tenant</module>
+        <module>218-springboot-demo-mysql57-mybatis-sharding-jdbc</module>
+        <module>181-springboot-demo-banner</module>
+        <module>185-springboot-demo-devtools</module>
+        <module>161-springboot-demo-actuator</module>
+        <module>163-springboot-demo-springboot-admin</module>
+        <module>427-springboot-demo-schedule-netty-hashedwheeltimer</module>
     </modules>
 
     <properties>

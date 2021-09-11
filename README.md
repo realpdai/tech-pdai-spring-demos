@@ -55,6 +55,16 @@
 + **15x - view resolver**
     + 151-view-thymeleaf
     + freemarker
+    + volecity
+
++ 16x - monitor
+    + 161-actuator
+    + 163-springboot-admin
+
++ 18x - others
+    + 181-banner
+    + 185-devtools
+
 + **19x - unit test**
     + <mark>*191 - junit4*
     + <mark>*192 - junit5*
@@ -70,10 +80,10 @@
     + <mark>*212-mysql57-mybatis-xml*
     + 213-mysql57-mybatis-anno
     + 214-mysql57-mybatis-plus
+    + 216-mysql57-mybatis-multi-datasource
+    + 217-mysql57-mybatis-multi-tenant
+    + 218-mysql57-mybatis-sharding-jdbc
     + <mark>*219-mysql57-mybatis-druid*
-    + shardingJDBC
-    + multiple-datasource
-    + multiple-mybatis-plus
 + **22x - mysql8**
     + <mark>*221-mysql8-jpa*
     + <mark>*222-mysql8-mybatis-xml*
@@ -92,6 +102,10 @@
 
 ### 3xx - springBoot 2.5.x + MQ
 
++ activeMQ
++ zeroMQ
++ rabbitMQ
++ kafka
 
 ### 4xx - springBoot 2.5.x + Socket/Schedule/Security...
 
@@ -128,14 +142,15 @@
 + docker
 + vue
 + gRPC
-
++ javafx
 
 ### 6xx - springBoot 2.5.x + Function
 
 + rate limiter
 + method time cost
   + AOP
-  + stop watch
+  + stop watch（spring/guava/apache)
+  + arthas
 
 ### 7xx - springBoot 2.5.x + WebFlux
 
