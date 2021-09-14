@@ -11,7 +11,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>tech.pdai</groupId>
-    <artifactId>181-springboot-demo-banner</artifactId>
+    <artifactId>182-springboot-demo-banner-gif</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

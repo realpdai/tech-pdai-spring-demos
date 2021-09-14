@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    banner-mode: console
+    show-banner: true
+  banner:
+    charset: UTF-8
+    image:
+      margin: 0
+      height: 10
+      invert: false
+      location: classpath:pdai.png

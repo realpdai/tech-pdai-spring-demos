@@ -66,6 +66,7 @@
         <module>161-springboot-demo-actuator</module>
         <module>163-springboot-demo-springboot-admin</module>
         <module>427-springboot-demo-schedule-netty-hashedwheeltimer</module>
+        <module>182-springboot-demo-banner-gif</module>
     </modules>
 
     <properties>
