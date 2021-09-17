@@ -49,26 +49,30 @@
     + <mark>*141-validation-binding-result*
     + <mark>*142-validation-exception-handler*
     + <mark>*143-validation-i18n*
-    + 144-validation-self-defined
-    + 145-validation-group
+    + <mark>*144-validation-group*
+    + <mark>*145-validation-self-defined*
 
-+ **15x - view resolver**
-    + 151-view-thymeleaf
-    + freemarker
-    + volecity
++ **15x - api**
+    + <mark>*151-api-multi-version*
 
 + 16x - monitor
     + 161-actuator
     + 163-springboot-admin
 
++ **17x - view resolver**
+    + 151-view-thymeleaf
+    + freemarker
+    + volecity
+
 + 18x - others
-    + 181-banner
-    + 185-devtools
+    + <mark>*181-banner*
+    + <mark>*182-banner-gif*
+    + <mark>*185-devtools*
 
 + **19x - unit test**
-    + <mark>*191 - junit4*
-    + <mark>*192 - junit5*
-    + <mark>*193 - junit5-mockito*
+    + <mark>*191-junit4*
+    + <mark>*192-junit5*
+    + <mark>*193-junit5-mockito*
 
 ### 2xx - springBoot 2.5.x + DB
 

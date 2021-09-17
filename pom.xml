@@ -69,6 +69,7 @@
         <module>182-springboot-demo-banner-gif</module>
         <module>144-springboot-demo-validation-group</module>
         <module>145-springboot-demo-validation-self-defined</module>
+        <module>151-springboot-demo-api-multi-version</module>
     </modules>
 
     <properties>
