@@ -39,7 +39,6 @@ public class UserParam implements Serializable {
     @Length(min = 1, max = 10, message = "nick name should be 1-10")
     private String nickName;
 
-    @NotEmpty(message = "could not be empty")
     @Range(min = 0, max = 1, message = "sex should be 0-1")
     private int sex;
 
