@@ -70,6 +70,7 @@
         <module>144-springboot-demo-validation-group</module>
         <module>145-springboot-demo-validation-self-defined</module>
         <module>151-springboot-demo-api-multi-version</module>
+        <module>611-springboot-demo-ratelimit-guava-ratelimiter</module>
     </modules>
 
     <properties>

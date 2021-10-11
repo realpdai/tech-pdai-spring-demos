@@ -32,7 +32,7 @@ public class ApiVersionCondition implements RequestCondition<ApiVersionCondition
     }
 
     /**
-     * method priority is higher then class.
+     * method priority is higher than class.
      *
      * @param other other
      * @return ApiVersionCondition
