@@ -20,7 +20,7 @@ public class RateLimitTestController {
         return ResponseResult.success();
     }
 
-    @RateLimit(limit = 1)
+    @RateLimit(limit = 5)
     @GetMapping("/limit1")
     public ResponseResult<String> limit1() {
         log.info("limit1");

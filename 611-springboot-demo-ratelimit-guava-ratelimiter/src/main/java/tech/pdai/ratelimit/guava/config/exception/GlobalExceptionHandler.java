@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(BusinessException.class)
     public ResponseResult<BusinessException> processBusinessException(BusinessException businessException) {
-        log.error(businessException.getLocalizedMessage(), businessException);
+        //log.error(businessException.getLocalizedMessage());
         return ResponseResult.fail(null, businessException.getLocalizedMessage()==null
                 ? ResponseStatus.HTTP_STATUS_500.getDescription()
                 :businessException.getLocalizedMessage());
@@ -39,7 +39,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(Exception.class)
     public ResponseResult<Exception> processException(Exception exception) {
-        log.error(exception.getLocalizedMessage(), exception);
+        log.error(exception.getLocalizedMessage());
         return ResponseResult.fail(null, ResponseStatus.HTTP_STATUS_500.getDescription());
     }
 }

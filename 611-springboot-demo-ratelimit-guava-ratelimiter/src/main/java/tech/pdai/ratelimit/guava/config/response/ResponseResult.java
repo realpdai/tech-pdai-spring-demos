@@ -2,9 +2,13 @@ package tech.pdai.ratelimit.guava.config.response;
 
 import java.io.Serializable;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Builder
 public class ResponseResult<T> {
