@@ -54,8 +54,7 @@
 
 + **15x - api**
     + <mark>*151-api-multi-version*
-    + 153-api-sign
-      + https://www.cnblogs.com/hujunzheng/p/10178584.html
+    + <mark>*153-api-sign*
     + 155-api-ecrypt
       + https://zhuanlan.zhihu.com/p/304124488
 
@@ -64,7 +63,7 @@
     + 163-springboot-admin
 
 + **17x - view resolver**
-    + 151-view-thymeleaf
+    + 171-view-thymeleaf
     + freemarker
     + volecity
 
