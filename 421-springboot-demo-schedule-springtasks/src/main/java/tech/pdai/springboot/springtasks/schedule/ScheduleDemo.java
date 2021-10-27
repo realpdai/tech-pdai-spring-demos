@@ -19,16 +19,34 @@ public class ScheduleDemo {
      * 每隔1分钟执行一次。
      */
     @Scheduled(fixedRate = 1000 * 60 * 1)
-    public void notifyCoinChanges() {
-        log.info("current DateTime, {}", LocalDateTime.now());
+    public void runScheduleFixedRate() {
+        log.info("runScheduleFixedRate: current DateTime, {}", LocalDateTime.now());
+    }
+
+    /**
+     * 每隔1分钟执行一次, 测试异常。
+     */
+    @Scheduled(fixedRate = 1000 * 60 * 1)
+    public void runScheduleFixedRateException() throws Exception {
+        log.info("runScheduleFixedRateException: current DateTime, {}", LocalDateTime.now());
+        throw new Exception("Error");
+    }
+
+    /**
+     * 每隔5s执行一次, 测试异常。
+     */
+    @Scheduled(cron = "*/5 * * * * ?")
+    public void runScheduleFixedRateException2() {
+        log.info("runScheduleFixedRateException2: current DateTime, {}", LocalDateTime.now());
+        int a = 1 / 0;
     }
 
     /**
      * 每个整点小时执行一次。
      */
     @Scheduled(cron = "0 0 */1 * * ?")
-    public void initPolicyList() {
-        log.info("current DateTime, {}", LocalDateTime.now());
+    public void runScheduleCron() {
+        log.info("runScheduleCron: current DateTime, {}", LocalDateTime.now());
     }
 
 }
