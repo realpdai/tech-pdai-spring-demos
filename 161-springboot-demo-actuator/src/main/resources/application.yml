@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path: /manage
+      exposure:
+        include: 'info,health,env,beans,date'
+  endpoint:
+    info:
+      enabled: true
+    health:
+      enabled: true
+    env:
+      enabled: true
+    beans:
+      enabled: true
+    date:
+      enabled: true
