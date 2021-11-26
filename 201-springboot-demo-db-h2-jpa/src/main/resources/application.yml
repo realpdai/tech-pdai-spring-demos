@@ -2,13 +2,10 @@ server:
   port: 8080
 spring:
   datasource:
-    data: classpath:db/data.sql
     driverClassName: org.h2.Driver
-    password: sa
-    platform: h2
-    schema: classpath:db/schema.sql
     url: jdbc:h2:mem:dbtest
     username: sa
+    password: sa
   h2:
     console:
       enabled: true
@@ -19,6 +16,11 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  sql:
+    init:
+      platform: h2
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
 knife4j:
   enable: true
   setting:
