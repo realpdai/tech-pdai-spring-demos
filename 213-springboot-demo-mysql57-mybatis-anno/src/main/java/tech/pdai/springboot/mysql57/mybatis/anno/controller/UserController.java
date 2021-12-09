@@ -1,7 +1,6 @@
 package tech.pdai.springboot.mysql57.mybatis.anno.controller;
 
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import io.swagger.annotations.ApiOperation;
@@ -34,16 +33,12 @@ public class UserController {
     @PostMapping("add")
     public ResponseResult<User> add(User user) {
         if (user.getId()==null) {
-            user.setCreateTime(LocalDateTime.now());
-            user.setUpdateTime(LocalDateTime.now());
             userService.save(user);
         } else {
-            user.setUpdateTime(LocalDateTime.now());
             userService.update(user);
         }
         return ResponseResult.success(userService.findById(user.getId()));
     }
-
 
     /**
      * @return user list
@@ -55,11 +50,26 @@ public class UserController {
     }
 
     /**
+     * @return user list 2
+     */
+    @ApiOperation("Query User One 2")
+    @GetMapping("edit2/{userId}")
+    public ResponseResult<User> edit2(@PathVariable("userId") Long userId) {
+        return ResponseResult.success(userService.findById2(userId));
+    }
+
+    /**
      * @return user list
      */
     @ApiOperation("Query User List")
     @GetMapping("list")
     public ResponseResult<List<User>> list(UserQueryBean userQueryBean) {
         return ResponseResult.success(userService.findList(userQueryBean));
+    }
+
+    @ApiOperation("Delete by id")
+    @PostMapping("delete")
+    public ResponseResult<Integer> delete(Long userId) {
+        return ResponseResult.success(userService.deleteById(userId));
     }
 }

@@ -59,4 +59,9 @@ public class UserDoServiceImpl implements IUserService {
     public int updatePassword(User user) {
         return userDao.updatePassword(user);
     }
+
+    @Override
+    public User findById2(Long userId) {
+        return userDao.findById2(userId);
+    }
 }

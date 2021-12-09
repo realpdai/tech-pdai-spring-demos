@@ -96,7 +96,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			<if test="userName != null and userName != ''">#{userName},</if>
 			<if test="password != null and password != ''">#{password},</if>
  			<if test="email != null and email != ''">#{email},</if>
- 			<if test="phoneNumber != null and phoneNumber != ''">#{phone_number},</if>
+ 			<if test="phoneNumber != null and phoneNumber != ''">#{phoneNumber},</if>
  			<if test="description != null and description != ''">#{description},</if>
  			sysdate(),
 			sysdate()

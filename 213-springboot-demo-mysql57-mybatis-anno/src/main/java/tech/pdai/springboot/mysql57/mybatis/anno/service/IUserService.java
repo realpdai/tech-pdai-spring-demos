@@ -25,4 +25,5 @@ public interface IUserService {
 
     int updatePassword(User user);
 
+    User findById2(Long userId);
 }
