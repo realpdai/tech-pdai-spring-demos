@@ -1,13 +1,13 @@
 package tech.pdai.springboot.schedule.executorservice;
 
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+
 import java.time.LocalDateTime;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author pdai
@@ -15,6 +15,25 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ScheduleExecutorServiceDemo {
 
+    @SneakyThrows
+    public static void schedule() {
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.schedule(
+                new Runnable() {
+                    @Override
+                    @SneakyThrows
+                    public void run() {
+                        log.info("run schedule @ {}", LocalDateTime.now());
+                    }
+                },
+                1000,
+                TimeUnit.MILLISECONDS);
+        // waiting to process(sleep to mock)
+        Thread.sleep(10000);
+
+        // stop
+        executor.shutdown();
+    }
 
     /**
      * 每秒执行一次，延迟0.5秒执行。
@@ -74,6 +93,9 @@ public class ScheduleExecutorServiceDemo {
     }
 
     public static void main(String[] args) {
+
+        schedule();
+
         scheduleAtFixedRate();
 
         scheduleWithFixedDelay();
