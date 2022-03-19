@@ -1,4 +1,4 @@
-package tech.pdai.springboot.mysql57.mybatis.anno.entity.query;
+package tech.pdai.springboot.mysql57.mybatisplus.xml.entity;
 
 import java.io.Serializable;
 

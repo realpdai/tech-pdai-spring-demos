@@ -1,11 +1,11 @@
-package tech.pdai.springboot.mysql57.mybatis.anno.entity;
-
-import java.time.LocalDateTime;
-import java.util.List;
+package tech.pdai.springboot.mysql57.mybatisplus.xml.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author pdai

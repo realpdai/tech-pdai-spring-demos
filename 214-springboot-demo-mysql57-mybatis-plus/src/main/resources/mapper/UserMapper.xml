@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tech.pdai.springboot.mysql57.mybatisplus.xml.dao.IUserDao">
+
+	<resultMap type="tech.pdai.springboot.mysql57.mybatisplus.xml.entity.User" id="UserResult">
+		<id     property="id"       	column="id"      		/>
+		<result property="userName"     column="user_name"    	/>
+		<result property="password"     column="password"    	/>
+		<result property="email"        column="email"        	/>
+		<result property="phoneNumber"  column="phone_number"  	/>
+		<result property="description"  column="description"  	/>
+		<result property="createTime"   column="create_time"  	/>
+		<result property="updateTime"   column="update_time"  	/>
+		<collection property="roles" ofType="tech.pdai.springboot.mysql57.mybatisplus.xml.entity.Role">
+			<result property="id" column="id"  />
+			<result property="name" column="name"  />
+			<result property="roleKey" column="role_key"  />
+			<result property="description" column="description"  />
+			<result property="createTime"   column="create_time"  	/>
+			<result property="updateTime"   column="update_time"  	/>
+		</collection>
+	</resultMap>
+	
+	<sql id="selectUserSql">
+        select u.id, u.password, u.user_name, u.email, u.phone_number, u.description, u.create_time, u.update_time, r.name, r.role_key, r.description, r.create_time, r.update_time
+		from tb_user u
+		left join tb_user_role ur on u.id=ur.user_id
+		inner join tb_role r on ur.role_id=r.id
+    </sql>
+	
+	<select id="findList" parameterType="tech.pdai.springboot.mysql57.mybatisplus.xml.entity.query.UserQueryBean" resultMap="UserResult">
+		<include refid="selectUserSql"/>
+		where u.id != 0
+		<if test="userName != null and userName != ''">
+			AND u.user_name like concat('%', #{user_name}, '%')
+		</if>
+		<if test="description != null and description != ''">
+			AND u.description like concat('%', #{description}, '%')
+		</if>
+		<if test="phoneNumber != null and phoneNumber != ''">
+			AND u.phone_number like concat('%', #{phoneNumber}, '%')
+		</if>
+		<if test="email != null and email != ''">
+			AND u.email like concat('%', #{email}, '%')
+		</if>
+	</select>
+	
+	<select id="findById" parameterType="Long" resultMap="UserResult">
+		<include refid="selectUserSql"/>
+		where u.id = #{id}
+	</select>
+	
+	<delete id="deleteById" parameterType="Long">
+ 		delete from tb_user where id = #{id}
+ 	</delete>
+ 	
+ 	<delete id="deleteByIds" parameterType="Long">
+		delete from tb_user where id in
+ 		<foreach collection="array" item="id" open="(" separator="," close=")">
+ 			#{id}
+        </foreach> 
+ 	</delete>
+ 	
+ 	<update id="update" parameterType="tech.pdai.springboot.mysql57.mybatisplus.xml.entity.User">
+ 		update tb_user
+ 		<set>
+ 			<if test="userName != null and userName != ''">user_name = #{userName},</if>
+ 			<if test="email != null and email != ''">email = #{email},</if>
+ 			<if test="phoneNumber != null and phoneNumber != ''">phone_number = #{phoneNumber},</if>
+			<if test="description != null and description != ''">description = #{description},</if>
+ 			update_time = sysdate()
+ 		</set>
+ 		where id = #{id}
+	</update>
+
+	<update id="updatePassword" parameterType="tech.pdai.springboot.mysql57.mybatisplus.xml.entity.User">
+		update tb_user
+		<set>
+			password = #{password}, update_time = sysdate()
+		</set>
+		where id = #{id}
+	</update>
+ 	
+ 	<insert id="save" parameterType="tech.pdai.springboot.mysql57.mybatisplus.xml.entity.User" useGeneratedKeys="true" keyProperty="id">
+ 		insert into tb_user(
+ 			<if test="userName != null and userName != ''">user_name,</if>
+			<if test="password != null and password != ''">password,</if>
+ 			<if test="email != null and email != ''">email,</if>
+			<if test="phoneNumber != null and phoneNumber != ''">phone_number,</if>
+ 			<if test="description != null and description != ''">description,</if>
+ 			create_time,
+			update_time
+ 		)values(
+ 			<if test="userName != null and userName != ''">#{userName},</if>
+			<if test="password != null and password != ''">#{password},</if>
+ 			<if test="email != null and email != ''">#{email},</if>
+ 			<if test="phoneNumber != null and phoneNumber != ''">#{phoneNumber},</if>
+ 			<if test="description != null and description != ''">#{description},</if>
+ 			sysdate(),
+			sysdate()
+ 		)
+	</insert>
+	
+</mapper> 
