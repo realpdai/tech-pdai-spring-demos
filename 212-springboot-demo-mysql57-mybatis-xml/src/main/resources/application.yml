@@ -5,7 +5,7 @@ spring:
     url: jdbc:mysql://localhost:3306/test_db?useSSL=false&autoReconnect=true&characterEncoding=utf8
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: bfXa4Pt2lUUScy8jakXf
+    password: admin
 
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml

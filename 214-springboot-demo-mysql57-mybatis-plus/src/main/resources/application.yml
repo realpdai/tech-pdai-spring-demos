@@ -7,9 +7,7 @@ spring:
     username: root
     password: bfXa4Pt2lUUScy8jakXf
 
-mybatis:
-  mapper-locations: classpath:mybatis/mapper/*.xml
-  type-aliases-package: tech.pdai.springboot.mysql57.xml.entity
+mybatis-plus:
   configuration:
     cache-enabled: true
     use-generated-keys: true

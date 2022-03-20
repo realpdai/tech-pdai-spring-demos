@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tech.pdai.springboot.mysql8.mybatisplus.xml.dao.IRoleDao">
+
+	<resultMap type="tech.pdai.springboot.mysql8.mybatisplus.xml.entity.Role" id="RoleResult">
+		<id     property="id"       	column="id"      		/>
+		<result property="name" 		column="name"  />
+		<result property="roleKey" 		column="role_key"  />
+		<result property="description" 	column="description"  />
+		<result property="createTime"   column="create_time"  	/>
+		<result property="updateTime"   column="update_time"  	/>
+	</resultMap>
+	
+	<sql id="selectRoleSql">
+        select  r.id, r.name, r.role_key, r.description, r.create_time, r.update_time
+			from tb_role r
+    </sql>
+	
+	<select id="findList" parameterType="tech.pdai.springboot.mysql8.mybatisplus.xml.entity.query.RoleQueryBean" resultMap="RoleResult">
+		<include refid="selectRoleSql"/>
+		where r.id != 0
+		<if test="name != null and name != ''">
+			AND r.name like concat('%', #{name}, '%')
+		</if>
+		<if test="roleKey != null and roleKey != ''">
+			AND r.role_key = #{roleKey}
+		</if>
+		<if test="description != null and description != ''">
+			AND r.description like concat('%', #{description}, '%')
+		</if>
+	</select>
+	
+</mapper> 
