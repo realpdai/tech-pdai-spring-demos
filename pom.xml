@@ -38,7 +38,7 @@
         <module>211-springboot-demo-mysql57-jpa</module>
         <module>212-springboot-demo-mysql57-mybatis-xml</module>
         <module>213-springboot-demo-mysql57-mybatis-anno</module>
-        <module>214-springboot-demo-mysql57-mybatis-plus</module>
+        <module>214-springboot-demo-mysql57-mybatisplus-xml</module>
         <module>221-springboot-demo-mysql8-jpa</module>
         <module>222-springboot-demo-mysql8-mybatis-xml</module>
         <module>223-springboot-demo-mysql8-mybatis-anno</module>
@@ -75,6 +75,7 @@
         <module>153-springboot-demo-api-sign</module>
         <module>x001-springboot-test-oom</module>
         <module>225-springboot-demo-mysql8-mybatisplus-anno</module>
+        <module>215-springboot-demo-mysql57-mybatisplus-anno</module>
     </modules>
 
     <properties>
