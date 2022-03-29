@@ -24,7 +24,7 @@ public class RoleController {
     private IRoleService roleService;
 
     /**
-     * @return user list
+     * @return role list
      */
     @ApiOperation("Query Role List")
     @GetMapping("list")

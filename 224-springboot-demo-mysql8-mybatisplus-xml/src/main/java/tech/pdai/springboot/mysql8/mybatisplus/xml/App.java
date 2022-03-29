@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author pdai
  */
 @SpringBootApplication
-@MapperScan("tech.pdai.springboot.mysql8.mybatisplus.anno.dao")
+@MapperScan("tech.pdai.springboot.mysql8.mybatisplus.xml.dao")
 public class App {
 
     public static void main(String[] args) {

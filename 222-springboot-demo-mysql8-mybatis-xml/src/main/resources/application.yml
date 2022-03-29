@@ -1,10 +1,12 @@
 server:
   port: 8080
 spring:
+  main:
+    allow-circular-references: true
   datasource:
     url: jdbc:mysql://localhost:3306/test_db?useSSL=false&autoReconnect=true&characterEncoding=utf8
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: test
+    username: root
     password: bfXa4Pt2lUUScy8jakXf
 
 mybatis:
