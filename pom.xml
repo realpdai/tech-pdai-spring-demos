@@ -76,6 +76,7 @@
         <module>x001-springboot-test-oom</module>
         <module>225-springboot-demo-mysql8-mybatisplus-anno</module>
         <module>215-springboot-demo-mysql57-mybatisplus-anno</module>
+        <module>226-springboot-demo-mysql8-mybatisplus-gencode</module>
     </modules>
 
     <properties>
