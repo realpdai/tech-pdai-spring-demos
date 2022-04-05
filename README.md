@@ -101,11 +101,12 @@
     + <mark>*231-postgre-jpa*
     + 232-postgre-jpa-jsonb
     + <mark>*239-postgre-jpa-druid*
-+ **24x - redis**
-+ **25x - mongodb**
-+ **26x - elasticsearch**
-+ **27x - hbase**
-+ **28x - neo4j**
++ **24x - sharding-jdbc**
++ **25x - redis**
++ **26x - mongodb**
++ **27x - elasticsearch**
++ **28x - hbase**
++ **29x - neo4j**
 
 ### 3xx - springBoot 2.5.x + MQ
 
