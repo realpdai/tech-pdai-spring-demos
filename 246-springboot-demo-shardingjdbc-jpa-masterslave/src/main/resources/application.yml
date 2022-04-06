@@ -1,0 +1,85 @@
+server:
+  port: 8080
+
+spring:
+  shardingsphere:
+    datasource:
+      names: master,slave0
+      master:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/test_db_sharding_master?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&characterEncoding=utf8
+        username: root
+        password: bfXa4Pt2lUUScy8jakXf
+      slave0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/test_db_sharding_slave0?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&characterEncoding=utf8
+        username: root
+        password: bfXa4Pt2lUUScy8jakXf
+    sharding:
+      tables:
+        tb_user:
+          database-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: master
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+            props:
+              worker:
+                id: 123
+        tb_role:
+          database-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: master
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+            props:
+              worker:
+                id: 123
+        tb_user_role:
+          database-strategy:
+            inline:
+              sharding-column: id
+              algorithm-expression: master
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+            props:
+              worker:
+                id: 123
+    config:
+      master-slave:
+        name: ms
+        load-balance-algorithm-type: round_robin
+        master-data-source-name: master
+        slave-data-source-names: slave0
+    props:
+      sql:
+        show: true
+  jpa:
+    open-in-view: false
+    generate-ddl: false
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+        use-new-id-generator-mappings: false
+
+knife4j:
+  enable: true
+  setting:
+    # default lang
+    language: en-US
+    # footer
+    enableFooter: false
+    enableFooterCustom: true
+    footerCustomContent: MIT | [Java 全栈](https://pdai.tech)
+    # models
+    enableSwaggerModels: true
+    swaggerModelName: My Models

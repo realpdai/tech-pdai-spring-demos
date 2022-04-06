@@ -79,6 +79,8 @@
         <module>226-springboot-demo-mysql8-mybatisplus-gencode</module>
         <module>227-springboot-demo-mysql8-mybatisplus-tenant</module>
         <module>241-springboot-demo-shardingjdbc-mybatis-tables</module>
+        <module>243-springboot-demo-shardingjdbc-jpa-tables</module>
+        <module>246-springboot-demo-shardingjdbc-jpa-masterslave</module>
     </modules>
 
     <properties>
