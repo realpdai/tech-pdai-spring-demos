@@ -9,13 +9,13 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
         jdbc-url: jdbc:mysql://localhost:3306/test_db_sharding_master?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&characterEncoding=utf8
-        username: root
+        username: test
         password: bfXa4Pt2lUUScy8jakXf
       slave0:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
         jdbc-url: jdbc:mysql://localhost:3306/test_db_sharding_slave0?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&characterEncoding=utf8
-        username: root
+        username: test
         password: bfXa4Pt2lUUScy8jakXf
     sharding:
       tables:
@@ -52,8 +52,7 @@ spring:
             props:
               worker:
                 id: 123
-    config:
-      master-slave:
+    master-slave:
         name: ms
         load-balance-algorithm-type: round_robin
         master-data-source-name: master
