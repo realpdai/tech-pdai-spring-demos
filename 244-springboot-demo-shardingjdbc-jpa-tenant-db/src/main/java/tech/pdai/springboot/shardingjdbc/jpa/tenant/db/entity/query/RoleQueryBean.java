@@ -7,6 +7,8 @@ import lombok.Data;
 @Builder
 public class RoleQueryBean {
 
+    private String tenant;
+
     /**
      * contains name pattern.
      */

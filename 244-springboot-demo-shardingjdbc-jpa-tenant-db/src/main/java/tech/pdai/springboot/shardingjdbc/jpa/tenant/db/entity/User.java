@@ -1,12 +1,23 @@
 package tech.pdai.springboot.shardingjdbc.jpa.tenant.db.entity;
 
+import java.time.LocalDateTime;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Set;
 
 /**
  * @author pdai
@@ -60,6 +71,11 @@ public class User implements BaseEntity {
      * update date time.
      */
     private LocalDateTime updateTime;
+
+    /**
+     * tenant.
+     */
+    private String tenant;
 
     /**
      * join to role table.

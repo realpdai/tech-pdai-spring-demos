@@ -1,10 +1,10 @@
 package tech.pdai.springboot.shardingjdbc.jpa.tenant.db.entity.response;
 
+import java.io.Serializable;
+
 import lombok.Builder;
 import lombok.Data;
-import tech.pdai.springboot.shardingjdbc.jpa.masterslave.constants.ResponseStatus;
-
-import java.io.Serializable;
+import tech.pdai.springboot.shardingjdbc.jpa.tenant.db.constants.ResponseStatus;
 
 @Data
 @Builder

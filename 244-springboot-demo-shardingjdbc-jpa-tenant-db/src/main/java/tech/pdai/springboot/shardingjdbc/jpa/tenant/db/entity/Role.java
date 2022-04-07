@@ -50,4 +50,9 @@ public class Role implements BaseEntity {
      */
     private LocalDateTime updateTime;
 
+    /**
+     * tenant.
+     */
+    private String tenant;
+
 }

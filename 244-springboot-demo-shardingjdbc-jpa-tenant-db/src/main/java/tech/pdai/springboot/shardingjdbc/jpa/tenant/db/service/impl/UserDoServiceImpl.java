@@ -48,6 +48,7 @@ public class UserDoServiceImpl extends BaseDoServiceImpl<User, Long> implements 
     @Override
     public Page<User> findPage(UserQueryBean queryBean, PageRequest pageRequest) {
         Specification<User> specification = Specifications.<User>and()
+                .eq(StringUtils.isNotEmpty(queryBean.getTenant()), "tenant", queryBean.getTenant())
                 .like(StringUtils.isNotEmpty(queryBean.getName()), "user_name", queryBean.getName())
                 .like(StringUtils.isNotEmpty(queryBean.getDescription()), "description",
                         queryBean.getDescription())

@@ -47,6 +47,7 @@ public class RoleDoServiceImpl extends BaseDoServiceImpl<Role, Long> implements 
     @Override
     public Page<Role> findPage(RoleQueryBean roleQueryBean, PageRequest pageRequest) {
         Specification<Role> specification = Specifications.<Role>and()
+                .eq(StringUtils.isNotEmpty(roleQueryBean.getTenant()), "tenant", roleQueryBean.getTenant())
                 .like(StringUtils.isNotEmpty(roleQueryBean.getName()), "name",
                         roleQueryBean.getName())
                 .like(StringUtils.isNotEmpty(roleQueryBean.getDescription()), "description",

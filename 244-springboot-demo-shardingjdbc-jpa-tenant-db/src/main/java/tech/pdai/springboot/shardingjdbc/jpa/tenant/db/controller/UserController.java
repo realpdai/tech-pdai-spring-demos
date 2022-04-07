@@ -1,17 +1,22 @@
 package tech.pdai.springboot.shardingjdbc.jpa.tenant.db.controller;
 
 
+import java.time.LocalDateTime;
+
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import tech.pdai.springboot.shardingjdbc.jpa.tenant.db.entity.User;
 import tech.pdai.springboot.shardingjdbc.jpa.tenant.db.entity.query.UserQueryBean;
 import tech.pdai.springboot.shardingjdbc.jpa.tenant.db.entity.response.ResponseResult;
 import tech.pdai.springboot.shardingjdbc.jpa.tenant.db.service.IUserService;
-
-import java.time.LocalDateTime;
 
 /**
  * @author pdai
@@ -30,7 +35,7 @@ public class UserController {
     @ApiOperation("Add/Edit User")
     @PostMapping("add")
     public ResponseResult<User> add(User user) {
-        if (user.getId() == null || !userService.exists(user.getId())) {
+        if (user.getId()==null || !userService.exists(user.getId())) {
             user.setCreateTime(LocalDateTime.now());
             user.setUpdateTime(LocalDateTime.now());
             userService.save(user);
@@ -56,7 +61,7 @@ public class UserController {
      */
     @ApiOperation("Query User Page")
     @GetMapping("list")
-    public ResponseResult<Page<User>> list(@RequestParam int pageSize, @RequestParam int pageNumber) {
-        return ResponseResult.success(userService.findPage(UserQueryBean.builder().build(), PageRequest.of(pageNumber, pageSize)));
+    public ResponseResult<Page<User>> list(@RequestParam int pageSize, @RequestParam int pageNumber, String tenant) {
+        return ResponseResult.success(userService.findPage(UserQueryBean.builder().tenant(tenant).build(), PageRequest.of(pageNumber, pageSize)));
     }
 }

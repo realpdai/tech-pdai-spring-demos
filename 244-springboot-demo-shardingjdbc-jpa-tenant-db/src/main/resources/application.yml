@@ -19,16 +19,46 @@ spring:
         password: bfXa4Pt2lUUScy8jakXf
     sharding:
       default-database-strategy:
-        standard:
-          precise-algorithm-class-name: tech.pdai.springboot.shardingjdbc.jpa.tenant.db.config.MyShardingDatabaseAlgorithm
-          sharding-column: tenant
+        # way 1: hint strategy
+        hint:
+          algorithm-class-name: tech.pdai.springboot.shardingjdbc.jpa.tenant.db.config.MyHintShardingDBAlgorithm
+        # way 2: standard strategy
+#        standard:
+#          precise-algorithm-class-name: tech.pdai.springboot.shardingjdbc.jpa.tenant.db.config.MyPreciseShardingDBAlgorithm
+#          sharding-column: tenant
+        # way 3: inline strategy
+#        inline:
+#          sharding-column: tenant
+#          algorithm-expression: tenant-$->{tenant}
       tables:
         tb_user:
           actual-data-nodes: tenant-${['a','b']}.tb_user
+          database-strategy:
+            hint:
+              algorithm-class-name: tech.pdai.springboot.shardingjdbc.jpa.tenant.db.config.MyHintShardingDBAlgorithm
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+            props:
+              worker:
+                id: 123
         tb_role:
           actual-data-nodes: tenant-${['a','b']}.tb_role
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+            props:
+              worker:
+                id: 123
         tb_user_role:
           actual-data-nodes: tenant-${['a','b']}.tb_user_role
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+            props:
+              worker:
+                id: 123
+      binding-tables: tb_user,tb_role,tb_user_role
     props:
       sql:
         show: true
