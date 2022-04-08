@@ -1,0 +1,74 @@
+server:
+  port: 8080
+
+spring:
+  shardingsphere:
+    datasource:
+      names: tenant-a,tenant-b
+      tenant-a:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/test_db_tenant_a?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&characterEncoding=utf8
+        username: root
+        password: bfXa4Pt2lUUScy8jakXf
+      tenant-b:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/test_db_tenant_b?allowPublicKeyRetrieval=true&useSSL=false&autoReconnect=true&characterEncoding=utf8
+        username: root
+        password: bfXa4Pt2lUUScy8jakXf
+    sharding:
+      default-database-strategy:
+        hint:
+          algorithm-class-name: tech.pdai.springboot.shardingjdbc.jpa.tenant.dbhint.config.MyHintShardingDBAlgorithm
+      tables:
+        tb_user:
+          actual-data-nodes: tenant-${['a','b']}.tb_user
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+            props:
+              worker:
+                id: 123
+        tb_role:
+          actual-data-nodes: tenant-${['a','b']}.tb_role
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+            props:
+              worker:
+                id: 123
+        tb_user_role:
+          actual-data-nodes: tenant-${['a','b']}.tb_user_role
+          key-generator:
+            column: id
+            type: SNOWFLAKE
+            props:
+              worker:
+                id: 123
+      binding-tables: tb_user,tb_role,tb_user_role
+    props:
+      sql:
+        show: true
+  jpa:
+    open-in-view: false
+    generate-ddl: false
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+        use-new-id-generator-mappings: false
+
+knife4j:
+  enable: true
+  setting:
+    # default lang
+    language: en-US
+    # footer
+    enableFooter: false
+    enableFooterCustom: true
+    footerCustomContent: MIT | [Java 全栈](https://pdai.tech)
+    # models
+    enableSwaggerModels: true
+    swaggerModelName: My Models

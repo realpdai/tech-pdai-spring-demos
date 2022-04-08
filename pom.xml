@@ -82,6 +82,7 @@
         <module>243-springboot-demo-shardingjdbc-jpa-tables</module>
         <module>246-springboot-demo-shardingjdbc-jpa-masterslave</module>
         <module>244-springboot-demo-shardingjdbc-jpa-tenant-db</module>
+        <module>245-springboot-demo-shardingjdbc-jpa-tenant-db-hint</module>
     </modules>
 
     <properties>
