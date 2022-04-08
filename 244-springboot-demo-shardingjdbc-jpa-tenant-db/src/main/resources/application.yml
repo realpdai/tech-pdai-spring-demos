@@ -19,23 +19,17 @@ spring:
         password: bfXa4Pt2lUUScy8jakXf
     sharding:
       default-database-strategy:
-        # way 1: hint strategy
-        hint:
-          algorithm-class-name: tech.pdai.springboot.shardingjdbc.jpa.tenant.db.config.MyHintShardingDBAlgorithm
-        # way 2: standard strategy
-#        standard:
-#          precise-algorithm-class-name: tech.pdai.springboot.shardingjdbc.jpa.tenant.db.config.MyPreciseShardingDBAlgorithm
-#          sharding-column: tenant
-        # way 3: inline strategy
+        # way 1: standard strategy
+        standard:
+          precise-algorithm-class-name: tech.pdai.springboot.shardingjdbc.jpa.tenant.db.config.MyPreciseShardingDBAlgorithm
+          sharding-column: tenant
+        # way 2: inline strategy
 #        inline:
 #          sharding-column: tenant
 #          algorithm-expression: tenant-$->{tenant}
       tables:
         tb_user:
           actual-data-nodes: tenant-${['a','b']}.tb_user
-          database-strategy:
-            hint:
-              algorithm-class-name: tech.pdai.springboot.shardingjdbc.jpa.tenant.db.config.MyHintShardingDBAlgorithm
           key-generator:
             column: id
             type: SNOWFLAKE
