@@ -1,0 +1,72 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_db?useSSL=false&autoReconnect=true&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: test
+    password: bfXa4Pt2lUUScy8jakXf
+    # Druid datasource
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # 初始化大小
+      initial-size: 5
+      # 最小连接数
+      min-idle: 10
+      # 最大连接数
+      max-active: 20
+      # 获取连接时的最大等待时间
+      max-wait: 60000
+      # 一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+      # 多久才进行一次检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      # 配置扩展插件：stat-监控统计，log4j-日志，wall-防火墙（防止SQL注入），去掉后，监控界面的sql无法统计
+      filters: stat,wall
+      # 检测连接是否有效的 SQL语句，为空时以下三个配置均无效
+      validation-query: SELECT 1
+      # 申请连接时执行validationQuery检测连接是否有效，默认true，开启后会降低性能
+      test-on-borrow: true
+      # 归还连接时执行validationQuery检测连接是否有效，默认false，开启后会降低性能
+      test-on-return: true
+      # 申请连接时如果空闲时间大于timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效，默认false，建议开启，不影响性能
+      test-while-idle: true
+      # 是否开启 StatViewServlet
+      stat-view-servlet:
+        enabled: true
+        # 访问监控页面 白名单，默认127.0.0.1
+        allow: 127.0.0.1
+        login-username: admin
+        login-password: admin
+      # FilterStat
+      filter:
+        stat:
+          # 是否开启 FilterStat，默认true
+          enabled: true
+          # 是否开启 慢SQL 记录，默认false
+          log-slow-sql: true
+          # 慢 SQL 的标准，默认 3000，单位：毫秒
+          slow-sql-millis: 5000
+          # 合并多个连接池的监控数据，默认false
+          merge-sql: false
+  jpa:
+    open-in-view: false
+    generate-ddl: false
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+        use-new-id-generator-mappings: false
+knife4j:
+  enable: true
+  setting:
+    # default lang
+    language: en-US
+    # footer
+    enableFooter: false
+    enableFooterCustom: true
+    footerCustomContent: MIT | [Java 全栈](https://pdai.tech)
+    # models
+    enableSwaggerModels: true
+    swaggerModelName: My Models
