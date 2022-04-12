@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.4</version>
+        <version>2.5.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>tech.pdai</groupId>
-    <artifactId>221-springboot-demo-mysql8-jpa-druid</artifactId>
+    <artifactId>251-springboot-demo-liquibase-mysql8-jpa</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -43,11 +43,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
+
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.2.8</version>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>4.9.1</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/knife4j-spring-boot-starter -->
@@ -59,7 +59,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
+            <version>1.18.20</version>
             <optional>true</optional>
         </dependency>
     </dependencies>

@@ -1,0 +1,57 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220412-01
+      author: pdai
+      changes:
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: firstname
+                  type: varchar(50)
+              - column:
+                  name: lastname
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: state
+                  type: char(2)
+
+  - changeSet:
+      id: 20220412-02
+      author: pdai
+      changes:
+        - addColumn:
+            tableName: person
+            columns:
+              - column:
+                  name: username
+                  type: varchar(8)
+
+  - changeSet:
+      id: 20220412-03
+      author: pdai
+      changes:
+        - addLookupTable:
+            existingTableName: person
+            existingColumnName: state
+            newTableName: state
+            newColumnName: id
+            newColumnDataType: char(2)
+
+  - changeSet:
+      id: 20220412-04
+      author: pdai
+      changes:
+        - sqlFile:
+            splitStatements: true
+            path: classpath:/db/changelog/db.changelog-20220412-04.sql
+            stripComments: true
