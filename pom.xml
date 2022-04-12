@@ -84,6 +84,7 @@
         <module>244-springboot-demo-shardingjdbc-jpa-tenant-db</module>
         <module>245-springboot-demo-shardingjdbc-jpa-tenant-db-hint</module>
         <module>221-springboot-demo-mysql8-jpa-druid</module>
+        <module>221-springboot-demo-mysql8-jpa-hikariCP</module>
     </modules>
 
     <properties>

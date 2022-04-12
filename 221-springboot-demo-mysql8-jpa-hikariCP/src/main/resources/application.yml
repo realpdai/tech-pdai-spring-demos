@@ -1,0 +1,48 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_db?useSSL=false&autoReconnect=true&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: bfXa4Pt2lUUScy8jakXf
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      #连接池名
+      pool-name: HikariCP
+      #最小空闲连接数
+      minimum-idle: 5
+      # 空闲连接存活最大时间，默认10分钟
+      idle-timeout: 600000
+      # 连接池最大连接数，默认是10
+      maximum-pool-size: 10
+      # 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      # 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认30分钟
+      max-lifetime: 1800000
+      # 数据库连接超时时间,默认30秒
+      connection-timeout: 30000
+      # 连接测试query
+      connection-test-query: SELECT 1
+  jpa:
+    open-in-view: false
+    generate-ddl: false
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+        use-new-id-generator-mappings: false
+
+knife4j:
+  enable: true
+  setting:
+    # default lang
+    language: en-US
+    # footer
+    enableFooter: false
+    enableFooterCustom: true
+    footerCustomContent: MIT | [Java 全栈](https://pdai.tech)
+    # models
+    enableSwaggerModels: true
+    swaggerModelName: My Models
