@@ -87,6 +87,7 @@
         <module>221-springboot-demo-mysql8-jpa-hikariCP</module>
         <module>251-springboot-demo-liquibase-mysql8-jpa</module>
         <module>255-springboot-demo-flyway-mysql8-jpa</module>
+        <module>235-springboot-demo-postgre-mybatisplus</module>
     </modules>
 
     <properties>

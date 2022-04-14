@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tech.pdai.springboot.postgre.mybatisplus.dao.IUserDao">
+
+	<resultMap type="tech.pdai.springboot.postgre.mybatisplus.entity.User" id="UserResult">
+		<id     property="id"       	column="id"      		/>
+		<result property="userName"     column="user_name"    	/>
+		<result property="password"     column="password"    	/>
+		<result property="email"        column="email"        	/>
+		<result property="phoneNumber"  column="phone_number"  	/>
+		<result property="description"  column="description"  	/>
+		<result property="createTime"   column="create_time"  typeHandler="tech.pdai.springboot.postgre.mybatisplus.config.PgTimestampZTypeHandler"	/>
+		<result property="updateTime"   column="update_time"  typeHandler="tech.pdai.springboot.postgre.mybatisplus.config.PgTimestampZTypeHandler"	/>
+		<collection property="roles" ofType="tech.pdai.springboot.postgre.mybatisplus.entity.Role">
+			<result property="id" column="id"  />
+			<result property="name" column="name"  />
+			<result property="roleKey" column="role_key"  />
+			<result property="description" column="description"  />
+			<result property="createTime"   column="create_time"  typeHandler="tech.pdai.springboot.postgre.mybatisplus.config.PgTimestampZTypeHandler"	/>
+			<result property="updateTime"   column="update_time"  typeHandler="tech.pdai.springboot.postgre.mybatisplus.config.PgTimestampZTypeHandler"	/>
+		</collection>
+	</resultMap>
+	
+	<sql id="selectUserSql">
+        select u.id, u.password, u.user_name, u.email, u.phone_number, u.description, u.create_time, u.update_time, r.name, r.role_key, r.description, r.create_time, r.update_time
+		from tb_user u
+		left join tb_user_role ur on u.id=ur.user_id
+		inner join tb_role r on ur.role_id=r.id
+    </sql>
+	
+	<select id="findList" parameterType="tech.pdai.springboot.postgre.mybatisplus.entity.query.UserQueryBean" resultMap="UserResult">
+		<include refid="selectUserSql"/>
+		where u.id != 0
+		<if test="userName != null and userName != ''">
+			AND u.user_name like concat('%', #{user_name}, '%')
+		</if>
+		<if test="description != null and description != ''">
+			AND u.description like concat('%', #{description}, '%')
+		</if>
+		<if test="phoneNumber != null and phoneNumber != ''">
+			AND u.phone_number like concat('%', #{phoneNumber}, '%')
+		</if>
+		<if test="email != null and email != ''">
+			AND u.email like concat('%', #{email}, '%')
+		</if>
+	</select>
+	
+</mapper> 
