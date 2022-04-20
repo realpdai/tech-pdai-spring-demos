@@ -91,6 +91,8 @@
         <module>103-springboot-demo-helloworld-build-war</module>
         <module>104-springboot-demo-helloworld-jetty</module>
         <module>105-springboot-demo-helloworld-undertow</module>
+        <module>107-springboot-demo-helloworld-docker</module>
+        <module>229-springboot-demo-mysql8-jpa-docker-compose</module>
     </modules>
 
     <properties>

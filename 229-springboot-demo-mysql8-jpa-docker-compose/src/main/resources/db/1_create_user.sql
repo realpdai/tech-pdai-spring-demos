@@ -1,0 +1,4 @@
+-- CREATE USER 'pdai'@'%' IDENTIFIED WITH mysql_native_password BY 'sdqiireasgadklkklk';
+-- GRANT All privileges ON *.* TO 'pdai'@'%';
+--
+-- FLUSH PRIVILEGES;

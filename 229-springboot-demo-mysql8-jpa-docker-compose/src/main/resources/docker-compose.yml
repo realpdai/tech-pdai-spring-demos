@@ -1,0 +1,55 @@
+version: "3.1"
+
+services:
+  db-mysql:
+    image: mysql:8.0.28
+    container_name: mysql8
+    restart: always
+    privileged: true
+    volumes:
+      # files
+      - /usr/local/docker/mysql/files/:/var/lib/mysql-files/
+#      # conf
+#      - /usr/local/docker/mysql/conf/:/etc/mysql/conf.d/
+#      # data
+#      - /usr/local/docker/mysql/data/:/var/lib/mysql/
+#      # log
+#      - /usr/local/docker/mysql/logs/:/var/log/
+      # init db by order
+      - ./db/:/docker-entrypoint-initdb.d/
+    environment:
+      TZ : Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: bfXa4Pt2lUUScy8jakXf
+      MYSQL_DATABASE: test_db
+      MYSQL_USER: pdai
+      MYSQL_PASSWORD: sdqiireasgadklkklk
+    ports:
+      - 13306:3306
+    command:
+      --authentication_policy=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+    networks:
+      - internal
+  service-app:
+    image: springboot-demo-mysql8-jpa
+    container_name: springboot-demo-mysql8-jpa
+    environment:
+      # profile
+#      SPRING_PROFILES_ACTIVE: prod
+      # or
+      SPRING_DATASOURCE_URL: jdbc:mysql://db-mysql:3306/test_db?useSSL=false&autoReconnect=true&characterEncoding=utf8
+      SPRING_DATASOURCE_USERNAME: pdai
+      SPRING_DATASOURCE_PASSWORD: sdqiireasgadklkklk
+    depends_on:
+      - db-mysql
+    ports:
+      - 18080:8080
+    networks:
+      - internal
+
+networks:
+  internal:
+    name: internal
