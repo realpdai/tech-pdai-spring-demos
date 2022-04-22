@@ -93,6 +93,7 @@
         <module>105-springboot-demo-helloworld-undertow</module>
         <module>107-springboot-demo-helloworld-docker</module>
         <module>229-springboot-demo-mysql8-jpa-docker-compose</module>
+        <module>011-spring-framework-demo-springmvc</module>
     </modules>
 
     <properties>

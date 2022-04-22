@@ -5,11 +5,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/test_db_pg
     username: postgres
     password: bfXa4Pt2lUUScy8jakXf
-    initial-size: 100
-    max-idle: 60
-    max-wait: 10000
-    min-idle: 20
-    max-active: 500
 mybatis-plus:
   configuration:
     cache-enabled: true
