@@ -14,17 +14,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="createTime"   column="create_time"  	/>
 		<result property="updateTime"   column="update_time"  	/>
 		<collection property="roles" ofType="tech.pdai.springboot.mysql8.mybatisplus.tenant.entity.Role">
-			<result property="id" column="id"  />
-			<result property="name" column="name"  />
+			<result property="id" column="rid"  />
+			<result property="name" column="rname"  />
 			<result property="roleKey" column="role_key"  />
-			<result property="description" column="description"  />
-			<result property="createTime"   column="create_time"  	/>
-			<result property="updateTime"   column="update_time"  	/>
+			<result property="description" column="rdescription"  />
+			<result property="createTime"   column="rcreate_time"  	/>
+			<result property="updateTime"   column="rupdate_time"  	/>
 		</collection>
 	</resultMap>
-	
+
 	<sql id="selectUserSql">
-        select u.id, u.password, u.user_name, u.email, u.phone_number, u.description, u.create_time, u.update_time, r.name, r.role_key, r.description, r.create_time, r.update_time
+        select u.id, u.password, u.user_name, u.email, u.phone_number, u.description, u.create_time, u.update_time, r.id rid, r.name rname, r.role_key, r.description rdescription, r.create_time rcreate_time, r.update_time rupdate_time
 		from tb_user u
 		left join tb_user_role ur on u.id=ur.user_id
 		inner join tb_role r on ur.role_id=r.id

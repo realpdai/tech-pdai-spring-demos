@@ -1,5 +1,7 @@
 package tech.pdai.springboot.mysql8.mybatisplus.anno.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +14,7 @@ import java.util.List;
  */
 @Getter
 @Setter
+@TableName(value = "tb_user", autoResultMap = true)
 public class User implements BaseEntity {
 
     /**
@@ -58,6 +61,7 @@ public class User implements BaseEntity {
     /**
      * join to role table.
      */
+    @TableField(exist = false)
     private List<Role> roles;
 
 }
