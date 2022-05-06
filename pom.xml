@@ -94,6 +94,10 @@
         <module>107-springboot-demo-helloworld-docker</module>
         <module>229-springboot-demo-mysql8-jpa-docker-compose</module>
         <module>011-spring-framework-demo-springmvc</module>
+        <module>262-springboot-demo-redis-jedis</module>
+        <module>261-springboot-demo-redis-lettuce</module>
+        <module>263-springboot-demo-redis-lettuce-enclosure</module>
+        <module>265-springboot-demo-redis-lettuce-distribute-lock</module>
     </modules>
 
     <properties>

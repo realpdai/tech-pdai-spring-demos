@@ -102,8 +102,8 @@
     + 232-postgre-jpa-jsonb
     + <mark>*239-postgre-jpa-druid*
 + **24x - sharding-jdbc**
-+ **25x - redis**
-+ **26x - mongodb**
++ **26x - redis**
++ **265 - mongodb**
 + **27x - elasticsearch**
 + **28x - hbase**
 + **29x - neo4j**
