@@ -1,4 +1,4 @@
-package entity;
+package tech.pdai.springboot.redis.jedis.entity;
 
 import lombok.Getter;
 import lombok.Setter;

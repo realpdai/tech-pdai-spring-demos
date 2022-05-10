@@ -1,8 +1,8 @@
-package entity.response;
+package tech.pdai.springboot.redis.jedis.entity.response;
 
+import tech.pdai.springboot.redis.jedis.constants.ResponseStatus;
 import lombok.Builder;
 import lombok.Data;
-import tech.pdai.springboot.redis.lettuce.constants.ResponseStatus;
 
 import java.io.Serializable;
 

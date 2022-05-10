@@ -1,6 +1,7 @@
-package config;
+package tech.pdai.springboot.redis.jedis.config;
 
 import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
+import tech.pdai.springboot.redis.jedis.constants.ResponseStatus;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +13,6 @@ import springfox.documentation.schema.ScalarType;
 import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import tech.pdai.springboot.redis.lettuce.constants.ResponseStatus;
 
 import java.util.ArrayList;
 import java.util.List;

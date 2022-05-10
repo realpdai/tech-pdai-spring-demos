@@ -1,12 +1,13 @@
-package controller;
+package tech.pdai.springboot.redis.jedis.controller;
 
 
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
-import tech.pdai.springboot.redis.lettuce.entity.User;
-import tech.pdai.springboot.redis.lettuce.entity.response.ResponseResult;
+import tech.pdai.springboot.redis.jedis.entity.User;
+import tech.pdai.springboot.redis.jedis.entity.response.ResponseResult;
+
+import javax.annotation.Resource;
 
 /**
  * @author pdai
@@ -15,7 +16,7 @@ import tech.pdai.springboot.redis.lettuce.entity.response.ResponseResult;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
+    @Resource
     private RedisTemplate<String, User> redisTemplate;
 
     /**

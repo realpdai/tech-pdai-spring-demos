@@ -1,4 +1,4 @@
-package constants;
+package tech.pdai.springboot.redis.jedis.constants;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
