@@ -26,8 +26,8 @@ public class UserController {
     @ApiOperation("Add")
     @PostMapping("add")
     public ResponseResult<User> add(User user) {
-        redisTemplate.opsForValue().set("1", user);
-        return ResponseResult.success(redisTemplate.opsForValue().get("1"));
+        redisTemplate.opsForValue().set(String.valueOf(user.getId()), user);
+        return ResponseResult.success(redisTemplate.opsForValue().get(String.valueOf(user.getId())));
     }
 
     /**
