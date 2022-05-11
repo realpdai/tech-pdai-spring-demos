@@ -17,6 +17,9 @@ public class ProxyDemo {
      * @param args args
      */
     public static void main(String[] args) {
+        // generate proxy file, under 'com/sun/proxy'
+        System.setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
+
         // proxy
         IUserService userService = new UserLogProxy(new UserServiceImpl()).getLoggingProxy();
 
