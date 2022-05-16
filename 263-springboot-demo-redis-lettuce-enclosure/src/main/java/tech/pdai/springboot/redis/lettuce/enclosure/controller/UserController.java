@@ -3,10 +3,14 @@ package tech.pdai.springboot.redis.lettuce.enclosure.controller;
 
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import tech.pdai.springboot.redis.lettuce.enclosure.entity.User;
 import tech.pdai.springboot.redis.lettuce.enclosure.entity.response.ResponseResult;
+import tech.pdai.springboot.redis.lettuce.enclosure.service.IRedisService;
 
 /**
  * @author pdai
@@ -16,7 +20,7 @@ import tech.pdai.springboot.redis.lettuce.enclosure.entity.response.ResponseResu
 public class UserController {
 
     @Autowired
-    private RedisTemplate<String, User> redisTemplate;
+    private IRedisService<User> redisService;
 
     /**
      * @param user user param
@@ -25,8 +29,8 @@ public class UserController {
     @ApiOperation("Add")
     @PostMapping("add")
     public ResponseResult<User> add(User user) {
-        redisTemplate.opsForValue().set("1", user);
-        return ResponseResult.success(redisTemplate.opsForValue().get("1"));
+        redisService.set(String.valueOf(user.getId()), user);
+        return ResponseResult.success(redisService.get(String.valueOf(user.getId())));
     }
 
     /**
@@ -35,7 +39,7 @@ public class UserController {
     @ApiOperation("Find")
     @GetMapping("find/{userId}")
     public ResponseResult<User> edit(@PathVariable("userId") String userId) {
-        return ResponseResult.success(redisTemplate.opsForValue().get(userId));
+        return ResponseResult.success(redisService.get(userId));
     }
 
 }
