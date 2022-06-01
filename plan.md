@@ -94,8 +94,8 @@
 + **22x - mysql8**
     + <mark>*221-mysql8-jpa*
     + <mark>*222-mysql8-mybatis-xml*
-    + 223-mysql8-mybatis-anno
-    + 224-mysql8-mybatis-plus
+    + <mark>*223-mysql8-mybatis-anno*
+    + <mark>*224-mysql8-mybatis-plus*
     + <mark>*229-mysql57-mybatis-druid*
 + **23x - postgre**
     + <mark>*231-postgre-jpa*
@@ -123,12 +123,12 @@
     + 412-websocket-netty
 + 42x - schedule
     + <mark>*420-timer*
-        + https://blog.csdn.net/a1439775520/article/details/98472123
-    + <mark>*421-ScheduleExecutorService*
+    + <mark>*420-ScheduleExecutorService*
         + https://blog.csdn.net/tsyj810883979/article/details/8481621/
-    + <mark>*422-spring-tasks*
-    + <mark>*423-quartz*
-    + <mark>*424-quartz-cluster*
+    + <mark>*421-spring-tasks*
+    + <mark>*422-quartz*
+    + <mark>*423-quartz-cluster*
+    + <mark>*424-elastic-job-lite*
     + 427-HashedWheelTimer
         + https://www.cnblogs.com/lihao007/p/10588072.html
 + 43x - config

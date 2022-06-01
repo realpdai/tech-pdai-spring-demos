@@ -99,6 +99,7 @@
         <module>263-springboot-demo-redis-lettuce-enclosure</module>
         <module>265-springboot-demo-redis-lettuce-distribute-lock</module>
         <module>264-springboot-demo-redis-jedis-distribute-lock</module>
+        <module>424-springboot-demo-schedule-elastic-job-lite</module>
     </modules>
 
     <properties>
