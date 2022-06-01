@@ -10,12 +10,12 @@ elasticjob:
     namespace: elasticjob-lite-springboot
   jobs:
     simpleJob:
-      elasticJobClass: org.apache.shardingsphere.elasticjob.lite.example.job.SpringBootSimpleJob
+      elasticJobClass: tech.pdai.springboot.elasticjob.lite.job.SpringBootSimpleJob
       cron: 0/5 * * * * ?
       shardingTotalCount: 3
       shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
     dataflowJob:
-      elasticJobClass: org.apache.shardingsphere.elasticjob.lite.example.job.SpringBootDataflowJob
+      elasticJobClass: tech.pdai.springboot.elasticjob.lite.job.SpringBootDataflowJob
       cron: 0/5 * * * * ?
       shardingTotalCount: 3
       shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
@@ -26,7 +26,7 @@ elasticjob:
       props:
         script.command.line: "echo SCRIPT Job: "
     occurErrorNoticeDingtalkJob:
-      elasticJobClass: org.apache.shardingsphere.elasticjob.lite.example.job.SpringBootOccurErrorNoticeDingtalkJob
+      elasticJobClass: tech.pdai.springboot.elasticjob.lite.job.SpringBootOccurErrorNoticeDingtalkJob
       overwrite: true
       shardingTotalCount: 3
       shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
@@ -40,7 +40,7 @@ elasticjob:
           connectTimeout: 3000
           readTimeout: 5000
     occurErrorNoticeWechatJob:
-      elasticJobClass: org.apache.shardingsphere.elasticjob.lite.example.job.SpringBootOccurErrorNoticeWechatJob
+      elasticJobClass: tech.pdai.springboot.elasticjob.lite.job.SpringBootOccurErrorNoticeWechatJob
       overwrite: true
       shardingTotalCount: 3
       shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
@@ -52,7 +52,7 @@ elasticjob:
           connectTimeout: 3000
           readTimeout: 5000
     occurErrorNoticeEmailJob:
-      elasticJobClass: org.apache.shardingsphere.elasticjob.lite.example.job.SpringBootOccurErrorNoticeEmailJob
+      elasticJobClass: tech.pdai.springboot.elasticjob.lite.job.SpringBootOccurErrorNoticeEmailJob
       overwrite: true
       shardingTotalCount: 3
       shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou

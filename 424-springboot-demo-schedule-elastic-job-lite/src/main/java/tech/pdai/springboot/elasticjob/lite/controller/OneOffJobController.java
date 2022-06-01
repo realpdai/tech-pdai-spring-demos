@@ -17,43 +17,37 @@
 
 package tech.pdai.springboot.elasticjob.lite.controller;
 
-import org.apache.shardingsphere.elasticjob.lite.api.bootstrap.impl.OneOffJobBootstrap;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tech.pdai.springboot.elasticjob.lite.entity.response.ResponseResult;
 
 @RestController
 public class OneOffJobController {
 
-    @Autowired
-    @Qualifier(value = "occurErrorNoticeDingtalkBean")
-    private OneOffJobBootstrap occurErrorNoticeDingtalkJob;
-
-    @Autowired
-    @Qualifier(value = "occurErrorNoticeWechatBean")
-    private OneOffJobBootstrap occurErrorNoticeWechatJob;
-
-    @Autowired
-    @Qualifier(value = "occurErrorNoticeEmailBean")
-    private OneOffJobBootstrap occurErrorNoticeEmailJob;
-
-    @GetMapping("/execute/occurErrorNoticeDingtalkJob")
-    public ResponseResult<String> executeOneOffJob() {
-        occurErrorNoticeDingtalkJob.execute();
-        return ResponseResult.success();
-    }
-
-    @GetMapping("/execute/occurErrorNoticeWechatJob")
-    public ResponseResult<String> executeOccurErrorNoticeWechatJob() {
-        occurErrorNoticeWechatJob.execute();
-        return ResponseResult.success();
-    }
-
-    @GetMapping("/execute/occurErrorNoticeEmailJob")
-    public ResponseResult<String> executeOccurErrorNoticeEmailJob() {
-        occurErrorNoticeEmailJob.execute();
-        return ResponseResult.success();
-    }
+//    @Resource(name = "occurErrorNoticeDingtalkBean")
+//    private OneOffJobBootstrap occurErrorNoticeDingtalkJob;
+//
+//    @Autowired
+//    @Qualifier(value = "occurErrorNoticeWechatBean")
+//    private OneOffJobBootstrap occurErrorNoticeWechatJob;
+//
+//    @Autowired
+//    @Qualifier(value = "occurErrorNoticeEmailBean")
+//    private OneOffJobBootstrap occurErrorNoticeEmailJob;
+//
+//    @GetMapping("/execute/occurErrorNoticeDingtalkJob")
+//    public ResponseResult<String> executeOneOffJob() {
+//        occurErrorNoticeDingtalkJob.execute();
+//        return ResponseResult.success();
+//    }
+//
+//    @GetMapping("/execute/occurErrorNoticeWechatJob")
+//    public ResponseResult<String> executeOccurErrorNoticeWechatJob() {
+//        occurErrorNoticeWechatJob.execute();
+//        return ResponseResult.success();
+//    }
+//
+//    @GetMapping("/execute/occurErrorNoticeEmailJob")
+//    public ResponseResult<String> executeOccurErrorNoticeEmailJob() {
+//        occurErrorNoticeEmailJob.execute();
+//        return ResponseResult.success();
+//    }
 }
