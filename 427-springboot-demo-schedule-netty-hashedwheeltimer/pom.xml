@@ -11,5 +11,11 @@
 
     <artifactId>427-springboot-demo-schedule-netty-hashedwheeltimer</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.77.Final</version>
+        </dependency>
+    </dependencies>
 </project>
