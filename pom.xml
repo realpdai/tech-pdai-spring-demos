@@ -101,6 +101,7 @@
         <module>264-springboot-demo-redis-jedis-distribute-lock</module>
         <module>424-springboot-demo-schedule-elastic-job-lite</module>
         <module>426-springboot-demo-schedule-xxl-job</module>
+        <module>471-springboot-demo-file-excel-poi</module>
     </modules>
 
     <properties>
