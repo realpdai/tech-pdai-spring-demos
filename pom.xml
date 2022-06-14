@@ -103,6 +103,7 @@
         <module>426-springboot-demo-schedule-xxl-job</module>
         <module>471-springboot-demo-file-excel-poi</module>
         <module>472-springboot-demo-file-excel-easyexcel</module>
+        <module>473-springboot-demo-file-excel-easypoi</module>
     </modules>
 
     <properties>
