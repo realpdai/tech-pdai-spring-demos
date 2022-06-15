@@ -1,15 +1,5 @@
 package tech.pdai.springboot.file.excel.easypoi.service.impl;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.ServletOutputStream;
-
 import cn.afterturn.easypoi.excel.ExcelExportUtil;
 import cn.afterturn.easypoi.excel.ExcelImportUtil;
 import cn.afterturn.easypoi.excel.entity.ExportParams;
@@ -20,6 +10,11 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.stereotype.Service;
 import tech.pdai.springboot.file.excel.easypoi.entity.User;
 import tech.pdai.springboot.file.excel.easypoi.service.IUserService;
+
+import javax.servlet.ServletOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
 
 
 /**
@@ -34,10 +29,8 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void upload(InputStream inputStream) throws Exception {
         ImportParams importParams = new ImportParams();
-        importParams.setHeadRows(POSITION_ROW);
-        importParams.setTitleRows(1);
         List<User> userList = ExcelImportUtil.importExcel(inputStream, User.class, importParams);
-        userList.stream().peek(user -> log.info(user.toString()));
+        userList.stream().forEach(user -> log.info(user.toString()));
     }
 
     @Override
@@ -53,7 +46,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void fillExcelTemplate(ServletOutputStream outputStream) throws IOException {
         // 确保文件可访问，这个例子的excel模板，放在根目录下面
-        String templateFileName = "E://user_excel_template.xlsx";
+        String templateFileName = "/Users/pdai/Downloads/user_excel_template.xlsx";
         TemplateExportParams params = new TemplateExportParams(templateFileName);
 
         Map<String, Object> map = new HashMap<>();
@@ -67,10 +60,12 @@ public class UserServiceImpl implements IUserService {
     }
 
     private List<User> getUserList() {
-        return Collections.singletonList(User.builder()
+        List<User> userList = new ArrayList<>();
+        userList.add(User.builder()
                 .id(1L).userName("pdai").email("pdai@pdai.tech").phoneNumber(121231231231L)
                 .description("hello world")
                 .build());
+        return userList;
     }
 
 }
