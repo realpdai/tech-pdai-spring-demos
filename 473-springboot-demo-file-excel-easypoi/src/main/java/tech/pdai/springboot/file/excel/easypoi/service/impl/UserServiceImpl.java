@@ -46,14 +46,13 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void fillExcelTemplate(ServletOutputStream outputStream) throws IOException {
         // 确保文件可访问，这个例子的excel模板，放在根目录下面
-        String templateFileName = "/Users/pdai/Downloads/user_excel_template.xlsx";
+        String templateFileName = "/Users/pdai/Downloads/user_excel_template_easypoi.xlsx";
         TemplateExportParams params = new TemplateExportParams(templateFileName);
 
         Map<String, Object> map = new HashMap<>();
         map.put("user", "pdai");
         map.put("date", new Date());
         map.put("userList", getUserList());
-        map.put("userList2", getUserList());
         Workbook workbook = ExcelExportUtil.exportExcel(params, map);
         workbook.write(outputStream);
         workbook.close();
@@ -64,6 +63,10 @@ public class UserServiceImpl implements IUserService {
         userList.add(User.builder()
                 .id(1L).userName("pdai").email("pdai@pdai.tech").phoneNumber(121231231231L)
                 .description("hello world")
+                .build());
+        userList.add(User.builder()
+                .id(2L).userName("pdai2").email("pdai2@pdai.tech").phoneNumber(1212312312312L)
+                .description("hello world2")
                 .build());
         return userList;
     }
