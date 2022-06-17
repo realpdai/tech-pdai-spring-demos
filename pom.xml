@@ -104,6 +104,7 @@
         <module>471-springboot-demo-file-excel-poi</module>
         <module>472-springboot-demo-file-excel-easyexcel</module>
         <module>473-springboot-demo-file-excel-easypoi</module>
+        <module>475-springboot-demo-file-word-poi</module>
     </modules>
 
     <properties>
