@@ -1,7 +1,6 @@
 package tech.pdai.springboot.file.word.poi.service.impl;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
@@ -11,7 +10,6 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.util.Units;
-import org.apache.poi.xwpf.usermodel.BreakType;
 import org.apache.poi.xwpf.usermodel.Document;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -66,12 +64,12 @@ public class UserServiceImpl implements IUserService {
         CTTblWidth width = tablePr.addNewTblW();
         width.setW(BigInteger.valueOf(8000));
 
-        for(int i = 0; i< userList.size(); i++) {
+        for (int i = 0; i < userList.size(); i++) {
             List<XWPFTableCell> tableCells = table.getRow(i).getTableCells();
-            tableCells.get(0).setText(userList.get(i).getId()+"");
+            tableCells.get(0).setText(userList.get(i).getId() + "");
             tableCells.get(1).setText(userList.get(i).getUserName());
             tableCells.get(2).setText(userList.get(i).getEmail());
-            tableCells.get(3).setText(userList.get(i).getPhoneNumber()+"");
+            tableCells.get(3).setText(userList.get(i).getPhoneNumber() + "");
             tableCells.get(4).setText(userList.get(i).getDescription());
         }
 
@@ -128,7 +126,7 @@ public class UserServiceImpl implements IUserService {
 
     private List<User> getUserList() {
         List<User> userList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             userList.add(User.builder()
                     .id(Long.parseLong(i + "")).userName("pdai" + i).email("pdai@pdai.tech" + i).phoneNumber(121231231231L)
                     .description("hello world" + i)
