@@ -29,9 +29,9 @@ public class UserController {
         try {
             XWPFDocument document = userService.generateWordXWPFDocument();
             response.reset();
-            response.setContentType("application/vnd.ms-excel");
+            response.setContentType("application/octet-stream");
             response.setHeader("Content-disposition",
-                    "attachment;filename=user_world_" + System.currentTimeMillis() + ".docx");
+                    "attachment;filename=user_word_" + System.currentTimeMillis() + ".docx");
             OutputStream os = response.getOutputStream();
             document.write(os);
             os.close();

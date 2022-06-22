@@ -1,4 +1,8 @@
-package tech.pdai.springboot.redis.jedis.lock.config;
+package tech.pdai.springboot.file.word.poitl.config;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import io.swagger.annotations.ApiOperation;
@@ -20,11 +24,7 @@ import springfox.documentation.service.RequestParameter;
 import springfox.documentation.service.Response;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import tech.pdai.springboot.redis.jedis.lock.constants.ResponseStatus;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import tech.pdai.springboot.file.word.poitl.constants.ResponseStatus;
 
 /**
  * swagger config for open api.
@@ -69,7 +69,7 @@ public class OpenApiConfig {
      */
     private List<Response> getGlobalResponse() {
         return ResponseStatus.HTTP_STATUS_ALL.stream().map(
-                a -> new ResponseBuilder().code(a.getResponseCode()).description(a.getDescription()).build())
+                        a -> new ResponseBuilder().code(a.getResponseCode()).description(a.getDescription()).build())
                 .collect(Collectors.toList());
     }
 

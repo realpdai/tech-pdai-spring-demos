@@ -105,6 +105,12 @@
         <module>472-springboot-demo-file-excel-easyexcel</module>
         <module>473-springboot-demo-file-excel-easypoi</module>
         <module>475-springboot-demo-file-word-poi</module>
+        <module>476-springboot-demo-file-word-poi-tl</module>
+        <module>481-springboot-demo-file-pdf-itextpdf</module>
+        <module>482-springboot-demo-file-pdf-pdfbox</module>
+        <module>485-springboot-demo-file-online-openoffice</module>
+        <module>491-springboot-demo-file-updownload</module>
+        <module>492-springboot-demo-file-updownload-bigfile</module>
     </modules>
 
     <properties>

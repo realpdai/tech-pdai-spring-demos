@@ -1,12 +1,17 @@
 package tech.pdai.springboot.redis.jedis.lock.controller;
 
 
+import javax.annotation.Resource;
+
 import io.swagger.annotations.ApiOperation;
 import org.springframework.data.redis.core.RedisTemplate;
-import tech.pdai.springboot.redis.jedis.entity.User;
-import tech.pdai.springboot.redis.jedis.entity.response.ResponseResult;
-
-import javax.annotation.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import tech.pdai.springboot.redis.jedis.lock.entity.User;
+import tech.pdai.springboot.redis.jedis.lock.entity.response.ResponseResult;
 
 /**
  * @author pdai

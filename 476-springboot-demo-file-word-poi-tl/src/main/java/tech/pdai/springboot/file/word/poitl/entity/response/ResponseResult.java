@@ -1,10 +1,10 @@
-package tech.pdai.springboot.redis.jedis.lock.entity.response;
+package tech.pdai.springboot.file.word.poitl.entity.response;
+
+import java.io.Serializable;
 
 import lombok.Builder;
 import lombok.Data;
-import tech.pdai.springboot.redis.jedis.lock.constants.ResponseStatus;
-
-import java.io.Serializable;
+import tech.pdai.springboot.file.word.poitl.constants.ResponseStatus;
 
 @Data
 @Builder
