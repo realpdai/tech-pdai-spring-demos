@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+knife4j:
+  enable: true
+  setting:
+    # default lang
+    language: en-US
+    # footer
+    enableFooter: false
+    enableFooterCustom: true
+    footerCustomContent: MIT | [Java 全栈](https://pdai.tech)
+    # models
+    enableSwaggerModels: true
+    swaggerModelName: My Models
