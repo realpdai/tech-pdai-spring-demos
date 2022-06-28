@@ -6,8 +6,11 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import tech.pdai.springboot.file.pdf.itextpdf.entity.User;
+import tech.pdai.springboot.file.pdf.itextpdf.pdf.MyHeaderFooterPageEventHelper;
 import tech.pdai.springboot.file.pdf.itextpdf.service.IUserService;
 
 import java.io.IOException;
@@ -27,7 +30,8 @@ public class UserServiceImpl implements IUserService {
     public Document generateItextPdfDocument(OutputStream os) throws Exception {
         // document
         Document document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, os);
+        PdfWriter pdfWriter = PdfWriter.getInstance(document, os);
+        pdfWriter.setPageEvent(new MyHeaderFooterPageEventHelper("Java 全栈知识体系", "SpringBoot集成ItextPDF导出", "https://pdai.tech", "https://pdai.tech"));
 
         // open
         document.open();
@@ -76,9 +80,8 @@ public class UserServiceImpl implements IUserService {
         document.add(createChapterH2("2.2 图片导出示例"));
         document.add(createParagraph("以导出图片为例"));
         // 图片
-//        Resource resource = new ClassPathResource("pdai-guli.png");
-//        log.info(String.valueOf(resource.getFile().getAbsolutePath()));
-        Image image = Image.getInstance("/Users/pdai/pdai/www/tech-pdai-spring-demos/481-springboot-demo-file-pdf-itextpdf/src/main/resources/pdai-guli.png");
+        Resource resource = new ClassPathResource("pdai-guli.png");
+        Image image = Image.getInstance(resource.getURL());
         image.setAlignment(Element.ALIGN_CENTER);
         image.scalePercent(60); // 缩放
         document.add(image);
