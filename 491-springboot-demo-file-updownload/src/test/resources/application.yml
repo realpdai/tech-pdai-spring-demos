@@ -1,0 +1,8 @@
+server:
+  port: 8080
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 1024MB # 单个文件大小
+      max-request-size: 10240MB # 总文件大小（允许存储文件的文件夹大小）
