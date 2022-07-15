@@ -14,7 +14,7 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <spring.version>5.3.9</spring.version>
+        <spring.version>5.3.10</spring.version>
         <aspectjweaver.version>1.9.7</aspectjweaver.version>
     </properties>
 
